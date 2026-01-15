@@ -1,0 +1,37 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+
+# Temporary files
+/tmp/
+*.tmp
+
+# Python
+__pycache__/
+*.pyc
+
+# Claude-flow working directories
+.claude-flow/
+.hive-mind/
+.swarm/
+memory/
+claude-flow
+claude-flow.bat
+claude-flow.ps1
+claude-flow.config.json
+.mcp.json
+
+# Claude settings (optional - remove if you want to version this)
+.claude/

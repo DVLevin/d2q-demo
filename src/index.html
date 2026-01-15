@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="D2Q - Du Plan au Controle Qualite - Extraction automatisee des dimensions par IA">
+  <title>D2Q - Drawing to Quality Control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Base */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #3b82f6;
+      --success: #16a34a;
+      --success-light: #22c55e;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --radius: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--white);
+      color: var(--gray-800);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    .header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .logo-text {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+
+    .logo-subtitle {
+      font-size: 14px;
+      color: var(--gray-500);
+      font-weight: 500;
+    }
+
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 16px;
+      background: var(--gray-100);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-700);
+      transition: all 0.2s;
+    }
+
+    .lang-toggle:hover {
+      background: var(--gray-200);
+    }
+
+    .lang-toggle .active {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 80px 0;
+      background: linear-gradient(180deg, var(--white) 0%, var(--gray-50) 100%);
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-headline {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--gray-900);
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .hero-subheadline {
+      font-size: 20px;
+      color: var(--gray-600);
+      margin-bottom: 48px;
+      line-height: 1.5;
+    }
+
+    /* Phase Cards */
+    .phase-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 768px) {
+      .phase-cards {
+        grid-template-columns: 1fr;
+      }
+      .hero-headline {
+        font-size: 32px;
+      }
+    }
+
+    .phase-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      text-align: left;
+      transition: all 0.3s;
+    }
+
+    .phase-card--active {
+      border-color: var(--success);
+      box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.15), var(--shadow-lg);
+      transform: scale(1.02);
+    }
+
+    .phase-card--dimmed {
+      opacity: 0.6;
+    }
+
+    .phase-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--gray-100);
+      color: var(--gray-600);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .phase-card--active .phase-badge {
+      background: rgba(22, 163, 74, 0.1);
+      color: var(--success);
+    }
+
+    .phase-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 8px;
+    }
+
+    .phase-description {
+      font-size: 14px;
+      color: var(--gray-600);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .phase-status {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-400);
+    }
+
+    .phase-card--active .phase-status {
+      color: var(--success);
+    }
+
+    /* CTA Button */
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-lg);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .cta-button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .cta-button--large {
+      padding: 20px 40px;
+      font-size: 18px;
+    }
+
+    .cta-button--success {
+      background: var(--success);
+    }
+
+    .cta-button--success:hover {
+      background: #15803d;
+    }
+
+    /* Demo Section */
+    .demo-section {
+      padding: 80px 0;
+      background: var(--gray-50);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .demo-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--gray-900);
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--gray-600);
+    }
+
+    /* Drawing Grid */
+    .drawing-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 1024px) {
+      .drawing-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .drawing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .drawing-card {
+      background: var(--white);
+      border: 2px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .drawing-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .drawing-card.active {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+    }
+
+    .drawing-thumbnail {
+      aspect-ratio: 4/3;
+      background: var(--gray-100);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .drawing-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .drawing-info {
+      padding: 16px;
+    }
+
+    .drawing-number {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 4px;
+    }
+
+    .drawing-title {
+      font-size: 13px;
+      color: var(--gray-500);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Results Panel */
+    .results-panel {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      display: none;
+    }
+
+    .results-panel.visible {
+      display: block;
+      animation: slideUp 0.4s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .results-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .results-header h3 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .close-btn {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .close-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .results-body {
+      padding: 32px;
+    }
+
+    /* Drawing Info Grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 768px) {
+      .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .info-item {
+      background: var(--gray-50);
+      padding: 16px;
+      border-radius: var(--radius);
+      border-left: 4px solid var(--primary);
+    }
+
+    .info-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .info-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--gray-900);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+
+    .stat-card.warning {
+      background: linear-gradient(135deg, var(--warning) 0%, #d97706 100%);
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    /* Dimensions Table */
+    .table-section h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 16px;
+    }
+
+    .table-wrapper {
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .dimensions-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .dimensions-table thead {
+      background: var(--gray-50);
+    }
+
+    .dimensions-table th {
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gray-600);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid var(--gray-200);
+    }
+
+    .dimensions-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--gray-100);
+      font-size: 14px;
+    }
+
+    .dimensions-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .dimensions-table tr:hover {
+      background: var(--gray-50);
+    }
+
+    /* Confidence Badge */
+    .confidence-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .confidence-high {
+      background: rgba(22, 163, 74, 0.1);
+      color: var(--success);
+    }
+
+    .confidence-medium {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--warning);
+    }
+
+    .confidence-low {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--danger);
+    }
+
+    /* Action Buttons */
+    .results-actions {
+      display: flex;
+      gap: 16px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .action-btn--primary {
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+    }
+
+    .action-btn--primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .action-btn--secondary {
+      background: var(--white);
+      color: var(--gray-700);
+      border: 1px solid var(--gray-300);
+    }
+
+    .action-btn--secondary:hover {
+      background: var(--gray-50);
+      border-color: var(--gray-400);
+    }
+
+    /* Spinner Overlay */
+    .spinner-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .spinner-overlay.visible {
+      display: flex;
+    }
+
+    .spinner-content {
+      background: var(--white);
+      padding: 48px;
+      border-radius: var(--radius-xl);
+      text-align: center;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid var(--gray-200);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .spinner-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--gray-800);
+    }
+
+    /* Process Section */
+    .process-section {
+      padding: 80px 0;
+      background: var(--white);
+    }
+
+    .process-flow {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 48px;
+      position: relative;
+    }
+
+    @media (max-width: 1024px) {
+      .process-flow {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    .process-step {
+      flex: 1;
+      min-width: 140px;
+      max-width: 180px;
+      text-align: center;
+      position: relative;
+    }
+
+    .process-step::after {
+      content: '';
+      position: absolute;
+      top: 32px;
+      right: -24px;
+      width: 32px;
+      height: 2px;
+      background: var(--gray-300);
+    }
+
+    .process-step:last-child::after {
+      display: none;
+    }
+
+    @media (max-width: 1024px) {
+      .process-step::after {
+        display: none;
+      }
+    }
+
+    .step-number {
+      width: 64px;
+      height: 64px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .step-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 8px;
+    }
+
+    .step-description {
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.5;
+    }
+
+    /* Roadmap Section */
+    .roadmap-section {
+      padding: 80px 0;
+      background: var(--gray-50);
+    }
+
+    .roadmap-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 48px 0;
+    }
+
+    @media (max-width: 768px) {
+      .roadmap-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .roadmap-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .roadmap-card--current {
+      border-color: var(--success);
+      box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.15), var(--shadow-lg);
+    }
+
+    .roadmap-card--future {
+      opacity: 0.7;
+    }
+
+    .roadmap-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--gray-100);
+      color: var(--gray-600);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .roadmap-card--current .roadmap-badge {
+      background: rgba(22, 163, 74, 0.1);
+      color: var(--success);
+    }
+
+    .roadmap-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 8px;
+    }
+
+    .roadmap-timeline {
+      font-size: 14px;
+      color: var(--gray-500);
+      margin-bottom: 20px;
+    }
+
+    .roadmap-features {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .roadmap-features li {
+      padding: 8px 0;
+      font-size: 14px;
+      color: var(--gray-700);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .roadmap-features .check {
+      color: var(--success);
+      font-weight: bold;
+    }
+
+    .roadmap-features .pending {
+      color: var(--gray-400);
+    }
+
+    .roadmap-price {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .roadmap-card--current .roadmap-price {
+      color: var(--success);
+    }
+
+    .roadmap-cta {
+      text-align: center;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 40px 0;
+      background: var(--gray-900);
+      color: var(--gray-400);
+      text-align: center;
+    }
+
+    .footer-disclaimer {
+      font-size: 14px;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Utility */
+    .text-center { text-align: center; }
+    .mt-4 { margin-top: 16px; }
+    .mt-8 { margin-top: 32px; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-area">
+          <span class="logo-text">D2Q</span>
+          <span class="logo-subtitle" id="logo-subtitle">Drawing to Quality Control</span>
+        </div>
+        <button class="lang-toggle" id="lang-toggle">
+          <span id="lang-fr" class="active">FR</span>
+          <span>|</span>
+          <span id="lang-en">EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-headline" id="hero-headline">Du Plan au Controle Qualite en Quelques Secondes</h1>
+        <p class="hero-subheadline" id="hero-subheadline">
+          Extraction automatique des dimensions et tolerances. Generation de Fiches de Controle. Alimente par l'IA Claude.
+        </p>
+
+        <div class="phase-cards">
+          <div class="phase-card phase-card--active">
+            <div class="phase-badge" id="phase1-badge">Phase 1</div>
+            <h3 class="phase-title" id="phase1-title">Extraction Fiche de Controle</h3>
+            <p class="phase-description" id="phase1-desc">
+              Telecharger plan, extraire dimensions, generer Fiche de Controle automatiquement
+            </p>
+            <div class="phase-status" id="phase1-status">Disponible Maintenant</div>
+          </div>
+
+          <div class="phase-card phase-card--dimmed">
+            <div class="phase-badge" id="phase2-badge">Phase 2</div>
+            <h3 class="phase-title" id="phase2-title">Recherche de Similitudes</h3>
+            <p class="phase-description" id="phase2-desc">
+              Trouver automatiquement des plans historiques similaires
+            </p>
+            <div class="phase-status" id="phase2-status">Q2 2026</div>
+          </div>
+
+          <div class="phase-card phase-card--dimmed">
+            <div class="phase-badge" id="phase3-badge">Phase 3</div>
+            <h3 class="phase-title" id="phase3-title">Adaptation des Devis</h3>
+            <p class="phase-description" id="phase3-desc">
+              Reutiliser et adapter les devis existants automatiquement
+            </p>
+            <div class="phase-status" id="phase3-status">Q4 2026</div>
+          </div>
+        </div>
+
+        <button class="cta-button" onclick="scrollToDemo()">
+          <span id="cta-text">Voir Comment Ca Marche</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M19 12l-7 7-7-7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section class="demo-section" id="demo-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="demo-badge" id="demo-badge">Mode Demo</span>
+        <h2 class="section-title" id="demo-title">Demo Interactive</h2>
+        <p class="section-subtitle" id="demo-subtitle">
+          Selectionnez un plan pour voir les resultats d'extraction
+        </p>
+      </div>
+
+      <div class="drawing-grid" id="drawing-grid">
+        <!-- Drawing cards will be populated by JavaScript -->
+      </div>
+
+      <div class="results-panel" id="results-panel">
+        <div class="results-header">
+          <h3 id="results-title">Resultats d'Extraction</h3>
+          <button class="close-btn" onclick="closeResults()">&times;</button>
+        </div>
+        <div class="results-body">
+          <div class="info-grid" id="info-grid"></div>
+          <div class="stats-grid" id="stats-grid"></div>
+          <div class="table-section">
+            <h4 id="table-title">Dimensions Extraites</h4>
+            <div class="table-wrapper">
+              <table class="dimensions-table">
+                <thead>
+                  <tr>
+                    <th id="th-designation">Designation</th>
+                    <th id="th-value">Valeur</th>
+                    <th id="th-tolerance">Tolerance</th>
+                    <th id="th-method">Methode</th>
+                    <th id="th-confidence">Confiance</th>
+                  </tr>
+                </thead>
+                <tbody id="dimensions-body"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="results-actions" id="results-actions"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spinner Overlay -->
+  <div class="spinner-overlay" id="spinner">
+    <div class="spinner-content">
+      <div class="spinner"></div>
+      <p class="spinner-text" id="spinner-text">Analyse en cours...</p>
+    </div>
+  </div>
+
+  <!-- Process Section -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="process-title">Comment Ca Marche</h2>
+        <p class="section-subtitle" id="process-subtitle">
+          Du televersement du plan a la Fiche de Controle en quelques minutes
+        </p>
+      </div>
+
+      <div class="process-flow">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3 class="step-title" id="step1-title">Telecharger</h3>
+          <p class="step-description" id="step1-desc">Plan PDF ou image</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3 class="step-title" id="step2-title">Analyser</h3>
+          <p class="step-description" id="step2-desc">Traitement vision IA</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3 class="step-title" id="step3-title">Extraire</h3>
+          <p class="step-description" id="step3-desc">Dimensions et tolerances</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h3 class="step-title" id="step4-title">Valider</h3>
+          <p class="step-description" id="step4-desc">Score de confiance</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">5</div>
+          <h3 class="step-title" id="step5-title">Generer</h3>
+          <p class="step-description" id="step5-desc">Fiche de Controle</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">6</div>
+          <h3 class="step-title" id="step6-title">Livrer</h3>
+          <p class="step-description" id="step6-desc">Excel + Rapport</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap Section -->
+  <section class="roadmap-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="roadmap-title">Feuille de Route</h2>
+        <p class="section-subtitle" id="roadmap-subtitle">
+          Notre approche en trois phases pour revolutionner l'extraction de donnees QC
+        </p>
+      </div>
+
+      <div class="roadmap-cards">
+        <div class="roadmap-card roadmap-card--current">
+          <div class="roadmap-badge" id="rm1-badge">Phase 1</div>
+          <h3 class="roadmap-title" id="rm1-title">Extraction Fiche de Controle</h3>
+          <div class="roadmap-timeline" id="rm1-timeline">4-6 semaines</div>
+          <ul class="roadmap-features">
+            <li><span class="check">&#10003;</span> <span id="rm1-f1">Pipeline d'extraction fonctionnel</span></li>
+            <li><span class="check">&#10003;</span> <span id="rm1-f2">Generation de Fiche de Controle</span></li>
+            <li><span class="check">&#10003;</span> <span id="rm1-f3">Interface de validation humaine</span></li>
+            <li><span class="check">&#10003;</span> <span id="rm1-f4">Export Excel</span></li>
+          </ul>
+          <div class="roadmap-price">15 - 25K EUR</div>
+        </div>
+
+        <div class="roadmap-card">
+          <div class="roadmap-badge" id="rm2-badge">Phase 2</div>
+          <h3 class="roadmap-title" id="rm2-title">Recherche de Similitudes</h3>
+          <div class="roadmap-timeline" id="rm2-timeline">+4-6 semaines</div>
+          <ul class="roadmap-features">
+            <li><span class="pending">&#9675;</span> <span id="rm2-f1">Base de plans historiques</span></li>
+            <li><span class="pending">&#9675;</span> <span id="rm2-f2">Moteur de similitudes</span></li>
+            <li><span class="pending">&#9675;</span> <span id="rm2-f3">Score de correspondance</span></li>
+            <li><span class="pending">&#9675;</span> <span id="rm2-f4">Mise en evidence differences</span></li>
+          </ul>
+          <div class="roadmap-price">20 - 30K EUR</div>
+        </div>
+
+        <div class="roadmap-card roadmap-card--future">
+          <div class="roadmap-badge" id="rm3-badge">Phase 3</div>
+          <h3 class="roadmap-title" id="rm3-title">Adaptation des Devis</h3>
+          <div class="roadmap-timeline" id="rm3-timeline">+4-6 semaines</div>
+          <ul class="roadmap-features">
+            <li><span class="pending">&#9675;</span> <span id="rm3-f1">Integration base devis</span></li>
+            <li><span class="pending">&#9675;</span> <span id="rm3-f2">Moteur d'adaptation</span></li>
+            <li><span class="pending">&#9675;</span> <span id="rm3-f3">Calculs d'ajustement prix</span></li>
+            <li><span class="pending">&#9675;</span> <span id="rm3-f4">Suivi et audit</span></li>
+          </ul>
+          <div class="roadmap-price">25 - 35K EUR</div>
+        </div>
+      </div>
+
+      <div class="roadmap-cta">
+        <button class="cta-button cta-button--large cta-button--success" onclick="scrollToDemo()">
+          <span id="roadmap-cta-text">Commencons la Phase 1</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-disclaimer" id="footer-text">
+        Version Demo: Ceci est une demonstration avec des resultats pre-calcules.
+        Le systeme de production traitera vos plans reels en temps reel avec une precision de niveau production.
+      </p>
+      <p class="mt-4" style="font-size: 12px; opacity: 0.7;">
+        &copy; 2026 D2Q - Drawing to Quality Control
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // ============================================
+    // EMBEDDED DRAWING DATA
+    // ============================================
+    const drawings = {
+      "2062": {
+        id: "2062",
+        title: "Cercle d'emboitage dessus-dessous",
+        image: "../images/photo_7_2026-01-15_15-29-37.jpg",
+        material: "VC Y14QP",
+        partNumber: "50007",
+        revision: "Current",
+        dimensions: [
+          { designation: "Diam. Exterieur principal", value: "50.90", tolerance: "+-0.02", method: "Trimos", confidence: 96 },
+          { designation: "Diam. Interieur", value: "38.00", tolerance: "+-0.02", method: "Trimos", confidence: 94 },
+          { designation: "Hauteur totale", value: "2.50", tolerance: "+-0.05", method: "Trimos", confidence: 92 },
+          { designation: "Rayon R14.50", value: "14.50", tolerance: "-", method: "Videocad", confidence: 88 },
+          { designation: "Rayon R16.50", value: "16.50", tolerance: "-", method: "Videocad", confidence: 89 },
+          { designation: "Rayon R19.00", value: "19.00", tolerance: "-", method: "Videocad", confidence: 91 },
+          { designation: "Angle degagement", value: "45 deg", tolerance: "+-1 deg", method: "Videocad", confidence: 85 },
+          { designation: "Nombre encoches", value: "12", tolerance: "-", method: "Visuel", confidence: 98 },
+          { designation: "Largeur encoche", value: "3.20", tolerance: "+-0.05", method: "Videocad", confidence: 87 },
+          { designation: "Profondeur encoche", value: "1.80", tolerance: "+-0.03", method: "Videocad", confidence: 84 },
+          { designation: "Chanfrein ext.", value: "0.15 x 45 deg", tolerance: "-", method: "Videocad", confidence: 82 },
+          { designation: "Position axe 12h", value: "ref", tolerance: "-", method: "Visuel", confidence: 95 }
+        ],
+        stats: { count: 28, avgConfidence: 91, time: "3.2s", needsReview: 2 },
+        reportUrl: "../assets/outputs/Report_2062.html"
+      },
+      "2091": {
+        id: "2091",
+        title: "Cercle emboitage",
+        image: "../images/photo_5_2026-01-15_15-29-37.jpg",
+        material: "VC 2460",
+        partNumber: "86070",
+        revision: "Current",
+        dimensions: [
+          { designation: "Diam. Exterieur", value: "31.25", tolerance: "+-0.02", method: "Trimos", confidence: 95 },
+          { designation: "Diam. Interieur fraisage", value: "16.30", tolerance: "+-0.02", method: "Trimos", confidence: 93 },
+          { designation: "Hauteur totale", value: "2.30", tolerance: "+-0.05", method: "Trimos", confidence: 94 },
+          { designation: "Rayon R1.20 (x3)", value: "1.20", tolerance: "-", method: "Videocad", confidence: 88 },
+          { designation: "Gravage METAL", value: "METAL", tolerance: "-", method: "Videocad", confidence: 97 },
+          { designation: "Hauteur METAL", value: "1.00", tolerance: "+-0.05", method: "Videocad", confidence: 86 },
+          { designation: "Degagement largeur", value: "5.50", tolerance: "+-0.05", method: "Videocad", confidence: 84 },
+          { designation: "Degagement profondeur", value: "1.10", tolerance: "+-0.03", method: "Videocad", confidence: 82 },
+          { designation: "Angle section A-A", value: "90 deg", tolerance: "-", method: "Aubert", confidence: 91 },
+          { designation: "Chanfrein", value: "0.15 x 45 deg", tolerance: "-", method: "Videocad", confidence: 79 }
+        ],
+        stats: { count: 24, avgConfidence: 89, time: "2.8s", needsReview: 2 },
+        reportUrl: "../assets/outputs/Report_2091.html"
+      },
+      "2154": {
+        id: "2154",
+        title: "Cercle d'emboitage",
+        image: "../images/photo_4_2026-01-15_15-29-37.jpg",
+        material: "VC 1142",
+        partNumber: "50107",
+        revision: "Current",
+        dimensions: [
+          { designation: "Diam. Exterieur", value: "36.21", tolerance: "+0/-0.05", method: "Trimos", confidence: 96 },
+          { designation: "Diam. Interieur", value: "27.02", tolerance: "+0.05/-0", method: "Trimos", confidence: 94 },
+          { designation: "Hauteur totale", value: "1.95", tolerance: "+-0.03", method: "Trimos", confidence: 95 },
+          { designation: "Diam. Ext. secondaire", value: "34.50", tolerance: "+-0.02", method: "Aubert", confidence: 92 },
+          { designation: "Rayon R1.60", value: "1.60", tolerance: "-", method: "Videocad", confidence: 88 },
+          { designation: "Hauteur marche", value: "0.85", tolerance: "+-0.02", method: "Trimos", confidence: 90 },
+          { designation: "Largeur gorge", value: "2.10", tolerance: "+-0.03", method: "Videocad", confidence: 85 },
+          { designation: "Position vis bascule", value: "4.00", tolerance: "+-0.05", method: "Videocad", confidence: 87 }
+        ],
+        stats: { count: 22, avgConfidence: 92, time: "2.4s", needsReview: 1 },
+        reportUrl: "../assets/outputs/Report_2154.html"
+      },
+      "2199": {
+        id: "2199",
+        title: "Cercle d'emboitage",
+        image: "../images/photo_3_2026-01-15_15-29-37.jpg",
+        material: "VC 2400 OP",
+        partNumber: "41007",
+        revision: "Current",
+        dimensions: [
+          { designation: "Diam. Exterieur", value: "37.31", tolerance: "+-0.02", method: "Trimos", confidence: 95 },
+          { designation: "Diam. Interieur", value: "24.20", tolerance: "+0.02/-0", method: "Trimos", confidence: 93 },
+          { designation: "Hauteur totale", value: "2.60", tolerance: "+-0.05", method: "Trimos", confidence: 94 },
+          { designation: "Gravage METAL", value: "METAL", tolerance: "-", method: "Videocad", confidence: 97 },
+          { designation: "Chanfrein ext.", value: "0.10 x 45 deg", tolerance: "-", method: "Videocad", confidence: 85 },
+          { designation: "Degagement type A", value: "1.12", tolerance: "+-0.02", method: "Videocad", confidence: 86 },
+          { designation: "Degagement type C", value: "3.85", tolerance: "+-0.03", method: "Videocad", confidence: 84 },
+          { designation: "Rayon R1.50", value: "1.50", tolerance: "-", method: "Videocad", confidence: 88 },
+          { designation: "Hauteur degagement E-F", value: "0.60", tolerance: "+-0.02", method: "SABI", confidence: 82 },
+          { designation: "Section G-H largeur", value: "1.35", tolerance: "+-0.02", method: "Jauge", confidence: 78 }
+        ],
+        stats: { count: 26, avgConfidence: 88, time: "3.1s", needsReview: 3 },
+        reportUrl: "../assets/outputs/Report_2199.html"
+      },
+      "2211": {
+        id: "2211",
+        title: "Cercle d'emboitage",
+        image: "../images/photo_2_2026-01-15_15-29-37.jpg",
+        material: "VC 2400",
+        partNumber: "76204",
+        revision: "Current",
+        dimensions: [
+          { designation: "Diam. Exterieur", value: "35.00", tolerance: "-0.15/0", method: "Trimos", confidence: 94 },
+          { designation: "Diam. Ext. secondaire", value: "37.20", tolerance: "+-0.02", method: "Aubert", confidence: 92 },
+          { designation: "Diam. Interieur", value: "21.20", tolerance: "+0.02/-0", method: "Trimos", confidence: 93 },
+          { designation: "Hauteur totale", value: "2.45", tolerance: "+-0.05", method: "Trimos", confidence: 95 },
+          { designation: "Note process", value: "ATTENTION APPUI CARRURE", tolerance: "-", method: "Visuel", confidence: 99 },
+          { designation: "Degagement symetrique", value: "3.00", tolerance: "+-0.03", method: "Videocad", confidence: 86 },
+          { designation: "Hauteur marche int.", value: "0.75", tolerance: "+-0.02", method: "Trimos", confidence: 88 },
+          { designation: "Rayon R1.10", value: "1.10", tolerance: "-", method: "Videocad", confidence: 85 },
+          { designation: "Chanfrein", value: "0.10 x 45 deg", tolerance: "-", method: "Videocad", confidence: 82 },
+          { designation: "Section E-E profondeur", value: "0.95", tolerance: "+-0.02", method: "SABI", confidence: 79 }
+        ],
+        stats: { count: 25, avgConfidence: 89, time: "2.9s", needsReview: 2 },
+        reportUrl: "../assets/outputs/Report_2211.html"
+      }
+    };
+
+    // ============================================
+    // TRANSLATIONS
+    // ============================================
+    const translations = {
+      fr: {
+        logoSubtitle: "Drawing to Quality Control",
+        heroHeadline: "Du Plan au Controle Qualite en Quelques Secondes",
+        heroSubheadline: "Extraction automatique des dimensions et tolerances. Generation de Fiches de Controle. Alimente par l'IA Claude.",
+        phase1Badge: "Phase 1", phase1Title: "Extraction Fiche de Controle", phase1Desc: "Telecharger plan, extraire dimensions, generer Fiche de Controle automatiquement", phase1Status: "Disponible Maintenant",
+        phase2Badge: "Phase 2", phase2Title: "Recherche de Similitudes", phase2Desc: "Trouver automatiquement des plans historiques similaires", phase2Status: "Q2 2026",
+        phase3Badge: "Phase 3", phase3Title: "Adaptation des Devis", phase3Desc: "Reutiliser et adapter les devis existants automatiquement", phase3Status: "Q4 2026",
+        ctaText: "Voir Comment Ca Marche",
+        demoBadge: "Mode Demo", demoTitle: "Demo Interactive", demoSubtitle: "Selectionnez un plan pour voir les resultats d'extraction",
+        resultsTitle: "Resultats d'Extraction",
+        tableTitle: "Dimensions Extraites",
+        thDesignation: "Designation", thValue: "Valeur", thTolerance: "Tolerance", thMethod: "Methode", thConfidence: "Confiance",
+        spinnerText: "Analyse en cours...",
+        processTitle: "Comment Ca Marche", processSubtitle: "Du televersement du plan a la Fiche de Controle en quelques minutes",
+        step1Title: "Telecharger", step1Desc: "Plan PDF ou image",
+        step2Title: "Analyser", step2Desc: "Traitement vision IA",
+        step3Title: "Extraire", step3Desc: "Dimensions et tolerances",
+        step4Title: "Valider", step4Desc: "Score de confiance",
+        step5Title: "Generer", step5Desc: "Fiche de Controle",
+        step6Title: "Livrer", step6Desc: "Excel + Rapport",
+        roadmapTitle: "Feuille de Route", roadmapSubtitle: "Notre approche en trois phases pour revolutionner l'extraction de donnees QC",
+        rm1Badge: "Phase 1", rm1Title: "Extraction Fiche de Controle", rm1Timeline: "4-6 semaines",
+        rm1F1: "Pipeline d'extraction fonctionnel", rm1F2: "Generation de Fiche de Controle", rm1F3: "Interface de validation humaine", rm1F4: "Export Excel",
+        rm2Badge: "Phase 2", rm2Title: "Recherche de Similitudes", rm2Timeline: "+4-6 semaines",
+        rm2F1: "Base de plans historiques", rm2F2: "Moteur de similitudes", rm2F3: "Score de correspondance", rm2F4: "Mise en evidence differences",
+        rm3Badge: "Phase 3", rm3Title: "Adaptation des Devis", rm3Timeline: "+4-6 semaines",
+        rm3F1: "Integration base devis", rm3F2: "Moteur d'adaptation", rm3F3: "Calculs d'ajustement prix", rm3F4: "Suivi et audit",
+        roadmapCtaText: "Commencons la Phase 1",
+        footerText: "Version Demo: Ceci est une demonstration avec des resultats pre-calcules. Le systeme de production traitera vos plans reels en temps reel avec une precision de niveau production.",
+        infoNumber: "Numero", infoTitle: "Titre", infoMaterial: "Materiau", infoPart: "N. Piece",
+        statDimensions: "Dimensions Trouvees", statConfidence: "Confiance Moyenne", statTime: "Temps de Traitement", statReview: "A Reviser",
+        downloadExcel: "Telecharger Excel", viewReport: "Voir Rapport"
+      },
+      en: {
+        logoSubtitle: "Drawing to Quality Control",
+        heroHeadline: "From Drawing to Quality Control in Seconds",
+        heroSubheadline: "Automated dimension and tolerance extraction. QC Table generation. Powered by Claude AI.",
+        phase1Badge: "Phase 1", phase1Title: "QC Table Extraction", phase1Desc: "Upload drawing, extract dimensions, generate QC Table automatically", phase1Status: "Available Now",
+        phase2Badge: "Phase 2", phase2Title: "Similarity Matching", phase2Desc: "Automatically find similar historical drawings", phase2Status: "Q2 2026",
+        phase3Badge: "Phase 3", phase3Title: "Quote Adaptation", phase3Desc: "Reuse and adapt existing quotations automatically", phase3Status: "Q4 2026",
+        ctaText: "See How It Works",
+        demoBadge: "Demo Mode", demoTitle: "Interactive Demo", demoSubtitle: "Select a drawing to see extraction results",
+        resultsTitle: "Extraction Results",
+        tableTitle: "Extracted Dimensions",
+        thDesignation: "Designation", thValue: "Value", thTolerance: "Tolerance", thMethod: "Method", thConfidence: "Confidence",
+        spinnerText: "Processing...",
+        processTitle: "How It Works", processSubtitle: "From drawing upload to QC Table in minutes",
+        step1Title: "Upload", step1Desc: "PDF or image drawing",
+        step2Title: "Analyze", step2Desc: "AI vision processing",
+        step3Title: "Extract", step3Desc: "Dimensions and tolerances",
+        step4Title: "Validate", step4Desc: "Confidence scoring",
+        step5Title: "Generate", step5Desc: "QC Table",
+        step6Title: "Deliver", step6Desc: "Excel + Report",
+        roadmapTitle: "Product Roadmap", roadmapSubtitle: "Our three-phase approach to revolutionizing QC data extraction",
+        rm1Badge: "Phase 1", rm1Title: "QC Table Extraction", rm1Timeline: "4-6 weeks",
+        rm1F1: "Working extraction pipeline", rm1F2: "QC Table generation", rm1F3: "Human validation UI", rm1F4: "Excel export",
+        rm2Badge: "Phase 2", rm2Title: "Similarity Matching", rm2Timeline: "+4-6 weeks",
+        rm2F1: "Historical drawing database", rm2F2: "Similarity search engine", rm2F3: "Match confidence scoring", rm2F4: "Difference highlighting",
+        rm3Badge: "Phase 3", rm3Title: "Quote Adaptation", rm3Timeline: "+4-6 weeks",
+        rm3F1: "Quote database integration", rm3F2: "Adaptation rules engine", rm3F3: "Price adjustment calculations", rm3F4: "Change tracking and audit",
+        roadmapCtaText: "Let's Start Phase 1",
+        footerText: "Demo Version: This is a demonstration with pre-computed results. The production system will process your actual drawings in real-time with production-grade accuracy.",
+        infoNumber: "Number", infoTitle: "Title", infoMaterial: "Material", infoPart: "Part No.",
+        statDimensions: "Dimensions Found", statConfidence: "Avg. Confidence", statTime: "Processing Time", statReview: "Needs Review",
+        downloadExcel: "Download Excel", viewReport: "View Report"
+      }
+    };
+
+    let currentLang = 'fr';
+    let selectedDrawing = null;
+
+    // ============================================
+    // INITIALIZATION
+    // ============================================
+    function init() {
+      renderDrawingCards();
+      updateLanguage();
+    }
+
+    // ============================================
+    // DRAWING CARDS
+    // ============================================
+    function renderDrawingCards() {
+      const grid = document.getElementById('drawing-grid');
+      grid.innerHTML = '';
+
+      Object.values(drawings).forEach(drawing => {
+        const card = document.createElement('div');
+        card.className = 'drawing-card';
+        card.dataset.id = drawing.id;
+        card.onclick = () => selectDrawing(drawing.id);
+
+        card.innerHTML = `
+          <div class="drawing-thumbnail">
+            <img src="${drawing.image}" alt="Drawing ${drawing.id}" onerror="this.style.display='none'">
+          </div>
+          <div class="drawing-info">
+            <div class="drawing-number">${drawing.id}</div>
+            <div class="drawing-title">${drawing.title}</div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    // ============================================
+    // DRAWING SELECTION
+    // ============================================
+    function selectDrawing(id) {
+      // Remove active state from all cards
+      document.querySelectorAll('.drawing-card').forEach(card => {
+        card.classList.remove('active');
+      });
+
+      // Add active state to selected card
+      const selectedCard = document.querySelector(`.drawing-card[data-id="${id}"]`);
+      if (selectedCard) {
+        selectedCard.classList.add('active');
+      }
+
+      selectedDrawing = id;
+
+      // Show spinner
+      showSpinner();
+
+      // Simulate processing delay
+      setTimeout(() => {
+        hideSpinner();
+        showResults(id);
+      }, 2500);
+    }
+
+    // ============================================
+    // RESULTS DISPLAY
+    // ============================================
+    function showResults(id) {
+      const drawing = drawings[id];
+      if (!drawing) return;
+
+      const t = translations[currentLang];
+      const panel = document.getElementById('results-panel');
+
+      // Update info grid
+      document.getElementById('info-grid').innerHTML = `
+        <div class="info-item">
+          <div class="info-label">${t.infoNumber}</div>
+          <div class="info-value">${drawing.id}</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">${t.infoTitle}</div>
+          <div class="info-value">${drawing.title}</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">${t.infoMaterial}</div>
+          <div class="info-value">${drawing.material}</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">${t.infoPart}</div>
+          <div class="info-value">${drawing.partNumber}</div>
+        </div>
+      `;
+
+      // Update stats grid
+      document.getElementById('stats-grid').innerHTML = `
+        <div class="stat-card">
+          <div class="stat-value">${drawing.stats.count}</div>
+          <div class="stat-label">${t.statDimensions}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">${drawing.stats.avgConfidence}%</div>
+          <div class="stat-label">${t.statConfidence}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">${drawing.stats.time}</div>
+          <div class="stat-label">${t.statTime}</div>
+        </div>
+        <div class="stat-card warning">
+          <div class="stat-value">${drawing.stats.needsReview}</div>
+          <div class="stat-label">${t.statReview}</div>
+        </div>
+      `;
+
+      // Update dimensions table
+      const tbody = document.getElementById('dimensions-body');
+      tbody.innerHTML = drawing.dimensions.map(dim => {
+        const confidenceClass = dim.confidence >= 90 ? 'high' : (dim.confidence >= 80 ? 'medium' : 'low');
+        return `
+          <tr>
+            <td><strong>${dim.designation}</strong></td>
+            <td>${dim.value}</td>
+            <td>${dim.tolerance}</td>
+            <td>${dim.method}</td>
+            <td><span class="confidence-badge confidence-${confidenceClass}">${dim.confidence}%</span></td>
+          </tr>
+        `;
+      }).join('');
+
+      // Update actions
+      document.getElementById('results-actions').innerHTML = `
+        <a href="${drawing.reportUrl}" target="_blank" class="action-btn action-btn--primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14,2 14,8 20,8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10,9 9,9 8,9"/>
+          </svg>
+          ${t.viewReport}
+        </a>
+      `;
+
+      panel.classList.add('visible');
+
+      // Scroll to results
+      panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function closeResults() {
+      document.getElementById('results-panel').classList.remove('visible');
+      document.querySelectorAll('.drawing-card').forEach(card => {
+        card.classList.remove('active');
+      });
+      selectedDrawing = null;
+    }
+
+    // ============================================
+    // SPINNER
+    // ============================================
+    function showSpinner() {
+      document.getElementById('spinner').classList.add('visible');
+    }
+
+    function hideSpinner() {
+      document.getElementById('spinner').classList.remove('visible');
+    }
+
+    // ============================================
+    // LANGUAGE TOGGLE
+    // ============================================
+    document.getElementById('lang-toggle').addEventListener('click', () => {
+      currentLang = currentLang === 'fr' ? 'en' : 'fr';
+      updateLanguage();
+
+      // Update selected drawing results if visible
+      if (selectedDrawing && document.getElementById('results-panel').classList.contains('visible')) {
+        showResults(selectedDrawing);
+      }
+    });
+
+    function updateLanguage() {
+      const t = translations[currentLang];
+
+      // Update language toggle indicator
+      document.getElementById('lang-fr').classList.toggle('active', currentLang === 'fr');
+      document.getElementById('lang-en').classList.toggle('active', currentLang === 'en');
+
+      // Update all text elements
+      const updates = {
+        'logo-subtitle': t.logoSubtitle,
+        'hero-headline': t.heroHeadline,
+        'hero-subheadline': t.heroSubheadline,
+        'phase1-badge': t.phase1Badge, 'phase1-title': t.phase1Title, 'phase1-desc': t.phase1Desc, 'phase1-status': t.phase1Status,
+        'phase2-badge': t.phase2Badge, 'phase2-title': t.phase2Title, 'phase2-desc': t.phase2Desc, 'phase2-status': t.phase2Status,
+        'phase3-badge': t.phase3Badge, 'phase3-title': t.phase3Title, 'phase3-desc': t.phase3Desc, 'phase3-status': t.phase3Status,
+        'cta-text': t.ctaText,
+        'demo-badge': t.demoBadge, 'demo-title': t.demoTitle, 'demo-subtitle': t.demoSubtitle,
+        'results-title': t.resultsTitle,
+        'table-title': t.tableTitle,
+        'th-designation': t.thDesignation, 'th-value': t.thValue, 'th-tolerance': t.thTolerance, 'th-method': t.thMethod, 'th-confidence': t.thConfidence,
+        'spinner-text': t.spinnerText,
+        'process-title': t.processTitle, 'process-subtitle': t.processSubtitle,
+        'step1-title': t.step1Title, 'step1-desc': t.step1Desc,
+        'step2-title': t.step2Title, 'step2-desc': t.step2Desc,
+        'step3-title': t.step3Title, 'step3-desc': t.step3Desc,
+        'step4-title': t.step4Title, 'step4-desc': t.step4Desc,
+        'step5-title': t.step5Title, 'step5-desc': t.step5Desc,
+        'step6-title': t.step6Title, 'step6-desc': t.step6Desc,
+        'roadmap-title': t.roadmapTitle, 'roadmap-subtitle': t.roadmapSubtitle,
+        'rm1-badge': t.rm1Badge, 'rm1-title': t.rm1Title, 'rm1-timeline': t.rm1Timeline,
+        'rm1-f1': t.rm1F1, 'rm1-f2': t.rm1F2, 'rm1-f3': t.rm1F3, 'rm1-f4': t.rm1F4,
+        'rm2-badge': t.rm2Badge, 'rm2-title': t.rm2Title, 'rm2-timeline': t.rm2Timeline,
+        'rm2-f1': t.rm2F1, 'rm2-f2': t.rm2F2, 'rm2-f3': t.rm2F3, 'rm2-f4': t.rm2F4,
+        'rm3-badge': t.rm3Badge, 'rm3-title': t.rm3Title, 'rm3-timeline': t.rm3Timeline,
+        'rm3-f1': t.rm3F1, 'rm3-f2': t.rm3F2, 'rm3-f3': t.rm3F3, 'rm3-f4': t.rm3F4,
+        'roadmap-cta-text': t.roadmapCtaText,
+        'footer-text': t.footerText
+      };
+
+      Object.entries(updates).forEach(([id, text]) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+      });
+    }
+
+    // ============================================
+    // SCROLL TO DEMO
+    // ============================================
+    function scrollToDemo() {
+      document.getElementById('demo-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ============================================
+    // RUN ON LOAD
+    // ============================================
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

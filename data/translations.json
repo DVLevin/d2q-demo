@@ -1,0 +1,210 @@
+{
+  "hero": {
+    "headline": {
+      "EN": "From Drawing to Quality Control in Seconds",
+      "FR": "Du Plan au Contrôle Qualité en Quelques Secondes"
+    },
+    "subheadline": {
+      "EN": "Automated dimension extraction • QC Table generation • Powered by AI",
+      "FR": "Extraction automatique des dimensions • Génération de Fiche de Contrôle • Alimenté par IA"
+    },
+    "cta": {
+      "EN": "See How It Works",
+      "FR": "Voir Comment Ça Marche"
+    },
+    "stats": {
+      "before": {
+        "EN": "30 minutes manual",
+        "FR": "30 minutes manuel"
+      },
+      "after": {
+        "EN": "30 seconds automated",
+        "FR": "30 secondes automatisé"
+      }
+    }
+  },
+  "demo": {
+    "title": {
+      "EN": "Interactive Demo",
+      "FR": "Démo Interactive"
+    },
+    "notice": {
+      "EN": "Demo Mode: Pre-analyzed samples from your drawings",
+      "FR": "Mode Démo: Échantillons pré-analysés de vos plans"
+    },
+    "selectDrawing": {
+      "EN": "Select a drawing to see extraction results",
+      "FR": "Sélectionnez un plan pour voir les résultats d'extraction"
+    },
+    "processing": {
+      "EN": "Processing...",
+      "FR": "Analyse en cours..."
+    },
+    "results": {
+      "drawingInfo": {
+        "EN": "Drawing Information",
+        "FR": "Informations du Plan"
+      },
+      "dimensions": {
+        "EN": "Extracted Dimensions",
+        "FR": "Dimensions Extraites"
+      },
+      "stats": {
+        "EN": "Extraction Statistics",
+        "FR": "Statistiques d'Extraction"
+      }
+    }
+  },
+  "table": {
+    "headers": {
+      "designation": {
+        "EN": "Designation",
+        "FR": "Désignation"
+      },
+      "value": {
+        "EN": "Value",
+        "FR": "Valeur"
+      },
+      "tolerance": {
+        "EN": "Tolerance",
+        "FR": "Tolérance"
+      },
+      "method": {
+        "EN": "Method",
+        "FR": "Méthode"
+      },
+      "confidence": {
+        "EN": "Confidence",
+        "FR": "Confiance"
+      }
+    }
+  },
+  "stats": {
+    "dimensionsFound": {
+      "EN": "Dimensions Found",
+      "FR": "Dimensions Trouvées"
+    },
+    "averageConfidence": {
+      "EN": "Average Confidence",
+      "FR": "Confiance Moyenne"
+    },
+    "processingTime": {
+      "EN": "Processing Time",
+      "FR": "Temps de Traitement"
+    },
+    "requiresReview": {
+      "EN": "Requires Review",
+      "FR": "Nécessite Révision"
+    }
+  },
+  "outputs": {
+    "title": {
+      "EN": "Output Files",
+      "FR": "Fichiers de Sortie"
+    },
+    "downloadExcel": {
+      "EN": "Download Excel",
+      "FR": "Télécharger Excel"
+    },
+    "downloadReport": {
+      "EN": "Download Report",
+      "FR": "Télécharger Rapport"
+    },
+    "viewReport": {
+      "EN": "View Report",
+      "FR": "Voir Rapport"
+    },
+    "qcTable": {
+      "EN": "QC Table (Fiche de Contrôle)",
+      "FR": "Fiche de Contrôle"
+    },
+    "analysisReport": {
+      "EN": "Analysis Report",
+      "FR": "Rapport d'Analyse"
+    },
+    "futureVision": {
+      "EN": "Future Vision",
+      "FR": "Vision Future"
+    },
+    "lockedMessage": {
+      "EN": "Available in Phase",
+      "FR": "Disponible en Phase"
+    }
+  },
+  "process": {
+    "title": {
+      "EN": "How It Works",
+      "FR": "Comment Ça Marche"
+    },
+    "clickToExpand": {
+      "EN": "Click to see details",
+      "FR": "Cliquez pour voir les détails"
+    },
+    "what": {
+      "EN": "What",
+      "FR": "Quoi"
+    },
+    "why": {
+      "EN": "Why",
+      "FR": "Pourquoi"
+    },
+    "how": {
+      "EN": "How",
+      "FR": "Comment"
+    },
+    "futureVision": {
+      "EN": "Future Vision (Phase 2 & 3)",
+      "FR": "Vision Future (Phase 2 & 3)"
+    }
+  },
+  "roadmap": {
+    "title": {
+      "EN": "Implementation Roadmap",
+      "FR": "Feuille de Route"
+    },
+    "status": {
+      "ready": {
+        "EN": "Ready to Build",
+        "FR": "Prêt à Construire"
+      },
+      "planned": {
+        "EN": "Planned",
+        "FR": "Planifié"
+      },
+      "vision": {
+        "EN": "Vision",
+        "FR": "Vision"
+      }
+    },
+    "timeline": {
+      "EN": "Timeline",
+      "FR": "Délai"
+    },
+    "investment": {
+      "EN": "Investment",
+      "FR": "Investissement"
+    },
+    "deliverables": {
+      "EN": "What You Get",
+      "FR": "Ce Que Vous Obtenez"
+    },
+    "prerequisites": {
+      "EN": "What You Provide",
+      "FR": "Ce Que Vous Fournissez"
+    },
+    "cta": {
+      "EN": "Let's Start Phase 1",
+      "FR": "Commençons la Phase 1"
+    },
+    "startHere": {
+      "EN": "Start Here",
+      "FR": "Commencez Ici"
+    }
+  },
+  "footer": {
+    "demoDisclaimer": {
+      "EN": "This is a demonstration with pre-computed results. Production system will process your actual drawings in real-time.",
+      "FR": "Ceci est une démonstration avec des résultats pré-calculés. Le système de production traitera vos plans réels en temps réel."
+    }
+  }
+}

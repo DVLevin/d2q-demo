@@ -1,0 +1,564 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-01-15T15:29:37.000Z",
+  "drawings": [
+    {
+      "id": "2062",
+      "title": "Drawing 2062",
+      "thumbnail": "images/photo_7_2026-01-15_15-29-37.jpg",
+      "fullImage": "images/photo_7_2026-01-15_15-29-37.jpg",
+      "drawingInfo": {
+        "number": "2062",
+        "title": "MECHANICAL ASSEMBLY - COMPONENT A",
+        "material": "ALUMINUM 6061-T6",
+        "partNumber": "PA-2062-001",
+        "revision": "C"
+      },
+      "dimensions": [
+        {
+          "designation": "A",
+          "value": 125.5,
+          "tolerance": {
+            "upper": 0.2,
+            "lower": -0.2
+          },
+          "method": "ai_extraction",
+          "confidence": 0.95,
+          "requiresReview": false
+        },
+        {
+          "designation": "B",
+          "value": 75.0,
+          "tolerance": {
+            "upper": 0.1,
+            "lower": -0.1
+          },
+          "method": "ai_extraction",
+          "confidence": 0.92,
+          "requiresReview": false
+        },
+        {
+          "designation": "C",
+          "value": 50.25,
+          "tolerance": {
+            "upper": 0.15,
+            "lower": -0.15
+          },
+          "method": "ai_extraction",
+          "confidence": 0.88,
+          "requiresReview": true
+        },
+        {
+          "designation": "D",
+          "value": 32.0,
+          "tolerance": {
+            "upper": 0.05,
+            "lower": -0.05
+          },
+          "method": "ai_extraction",
+          "confidence": 0.97,
+          "requiresReview": false
+        }
+      ],
+      "extractionStats": {
+        "dimensionsFound": 4,
+        "averageConfidence": 0.93,
+        "processingTime": 2.3,
+        "itemsRequiringReview": 1
+      },
+      "outputs": {
+        "excelFile": "outputs/2062_dimensions.xlsx",
+        "htmlReport": "outputs/2062_report.html"
+      }
+    },
+    {
+      "id": "2091",
+      "title": "Drawing 2091",
+      "thumbnail": "images/photo_5_2026-01-15_15-29-37.jpg",
+      "fullImage": "images/photo_5_2026-01-15_15-29-37.jpg",
+      "drawingInfo": {
+        "number": "2091",
+        "title": "BRACKET SUPPORT - TYPE B",
+        "material": "STEEL A36",
+        "partNumber": "PA-2091-002",
+        "revision": "B"
+      },
+      "dimensions": [
+        {
+          "designation": "A",
+          "value": 200.0,
+          "tolerance": {
+            "upper": 0.3,
+            "lower": -0.3
+          },
+          "method": "ai_extraction",
+          "confidence": 0.94,
+          "requiresReview": false
+        },
+        {
+          "designation": "B",
+          "value": 150.75,
+          "tolerance": {
+            "upper": 0.2,
+            "lower": -0.2
+          },
+          "method": "ai_extraction",
+          "confidence": 0.91,
+          "requiresReview": false
+        },
+        {
+          "designation": "C",
+          "value": 85.5,
+          "tolerance": {
+            "upper": 0.1,
+            "lower": -0.1
+          },
+          "method": "ai_extraction",
+          "confidence": 0.89,
+          "requiresReview": true
+        },
+        {
+          "designation": "D",
+          "value": 45.0,
+          "tolerance": {
+            "upper": 0.08,
+            "lower": -0.08
+          },
+          "method": "ai_extraction",
+          "confidence": 0.96,
+          "requiresReview": false
+        },
+        {
+          "designation": "E",
+          "value": 25.4,
+          "tolerance": {
+            "upper": 0.05,
+            "lower": -0.05
+          },
+          "method": "ai_extraction",
+          "confidence": 0.93,
+          "requiresReview": false
+        }
+      ],
+      "extractionStats": {
+        "dimensionsFound": 5,
+        "averageConfidence": 0.926,
+        "processingTime": 2.8,
+        "itemsRequiringReview": 1
+      },
+      "outputs": {
+        "excelFile": "outputs/2091_dimensions.xlsx",
+        "htmlReport": "outputs/2091_report.html"
+      }
+    },
+    {
+      "id": "2154",
+      "title": "Drawing 2154",
+      "thumbnail": "images/photo_4_2026-01-15_15-29-37.jpg",
+      "fullImage": "images/photo_4_2026-01-15_15-29-37.jpg",
+      "drawingInfo": {
+        "number": "2154",
+        "title": "HOUSING UNIT - MAIN BODY",
+        "material": "CAST IRON GG25",
+        "partNumber": "PA-2154-003",
+        "revision": "A"
+      },
+      "dimensions": [
+        {
+          "designation": "A",
+          "value": 300.0,
+          "tolerance": {
+            "upper": 0.5,
+            "lower": -0.5
+          },
+          "method": "ai_extraction",
+          "confidence": 0.96,
+          "requiresReview": false
+        },
+        {
+          "designation": "B",
+          "value": 225.5,
+          "tolerance": {
+            "upper": 0.4,
+            "lower": -0.4
+          },
+          "method": "ai_extraction",
+          "confidence": 0.94,
+          "requiresReview": false
+        },
+        {
+          "designation": "C",
+          "value": 175.0,
+          "tolerance": {
+            "upper": 0.3,
+            "lower": -0.3
+          },
+          "method": "ai_extraction",
+          "confidence": 0.92,
+          "requiresReview": false
+        },
+        {
+          "designation": "D",
+          "value": 120.25,
+          "tolerance": {
+            "upper": 0.2,
+            "lower": -0.2
+          },
+          "method": "ai_extraction",
+          "confidence": 0.87,
+          "requiresReview": true
+        },
+        {
+          "designation": "E",
+          "value": 80.0,
+          "tolerance": {
+            "upper": 0.15,
+            "lower": -0.15
+          },
+          "method": "ai_extraction",
+          "confidence": 0.90,
+          "requiresReview": false
+        },
+        {
+          "designation": "F",
+          "value": 55.5,
+          "tolerance": {
+            "upper": 0.1,
+            "lower": -0.1
+          },
+          "method": "ai_extraction",
+          "confidence": 0.95,
+          "requiresReview": false
+        }
+      ],
+      "extractionStats": {
+        "dimensionsFound": 6,
+        "averageConfidence": 0.923,
+        "processingTime": 3.2,
+        "itemsRequiringReview": 1
+      },
+      "outputs": {
+        "excelFile": "outputs/2154_dimensions.xlsx",
+        "htmlReport": "outputs/2154_report.html"
+      }
+    },
+    {
+      "id": "2199",
+      "title": "Drawing 2199",
+      "thumbnail": "images/photo_3_2026-01-15_15-29-37.jpg",
+      "fullImage": "images/photo_3_2026-01-15_15-29-37.jpg",
+      "drawingInfo": {
+        "number": "2199",
+        "title": "SHAFT ASSEMBLY - DRIVE UNIT",
+        "material": "STAINLESS STEEL 304",
+        "partNumber": "PA-2199-004",
+        "revision": "D"
+      },
+      "dimensions": [
+        {
+          "designation": "A",
+          "value": 400.0,
+          "tolerance": {
+            "upper": 0.6,
+            "lower": -0.6
+          },
+          "method": "ai_extraction",
+          "confidence": 0.97,
+          "requiresReview": false
+        },
+        {
+          "designation": "B",
+          "value": 60.0,
+          "tolerance": {
+            "upper": 0.08,
+            "lower": -0.08
+          },
+          "method": "ai_extraction",
+          "confidence": 0.95,
+          "requiresReview": false
+        },
+        {
+          "designation": "C",
+          "value": 45.0,
+          "tolerance": {
+            "upper": 0.05,
+            "lower": -0.05
+          },
+          "method": "ai_extraction",
+          "confidence": 0.93,
+          "requiresReview": false
+        },
+        {
+          "designation": "D",
+          "value": 30.0,
+          "tolerance": {
+            "upper": 0.03,
+            "lower": -0.03
+          },
+          "method": "ai_extraction",
+          "confidence": 0.91,
+          "requiresReview": false
+        },
+        {
+          "designation": "E",
+          "value": 20.0,
+          "tolerance": {
+            "upper": 0.02,
+            "lower": -0.02
+          },
+          "method": "ai_extraction",
+          "confidence": 0.88,
+          "requiresReview": true
+        },
+        {
+          "designation": "F",
+          "value": 15.0,
+          "tolerance": {
+            "upper": 0.02,
+            "lower": -0.02
+          },
+          "method": "ai_extraction",
+          "confidence": 0.86,
+          "requiresReview": true
+        },
+        {
+          "designation": "G",
+          "value": 10.0,
+          "tolerance": {
+            "upper": 0.01,
+            "lower": -0.01
+          },
+          "method": "ai_extraction",
+          "confidence": 0.94,
+          "requiresReview": false
+        }
+      ],
+      "extractionStats": {
+        "dimensionsFound": 7,
+        "averageConfidence": 0.92,
+        "processingTime": 3.5,
+        "itemsRequiringReview": 2
+      },
+      "outputs": {
+        "excelFile": "outputs/2199_dimensions.xlsx",
+        "htmlReport": "outputs/2199_report.html"
+      }
+    },
+    {
+      "id": "2211",
+      "title": "Drawing 2211",
+      "thumbnail": "images/photo_2_2026-01-15_15-29-37.jpg",
+      "fullImage": "images/photo_2_2026-01-15_15-29-37.jpg",
+      "drawingInfo": {
+        "number": "2211",
+        "title": "PLATE CONNECTOR - JUNCTION",
+        "material": "BRASS C36000",
+        "partNumber": "PA-2211-005",
+        "revision": "B"
+      },
+      "dimensions": [
+        {
+          "designation": "A",
+          "value": 180.0,
+          "tolerance": {
+            "upper": 0.25,
+            "lower": -0.25
+          },
+          "method": "ai_extraction",
+          "confidence": 0.96,
+          "requiresReview": false
+        },
+        {
+          "designation": "B",
+          "value": 140.0,
+          "tolerance": {
+            "upper": 0.2,
+            "lower": -0.2
+          },
+          "method": "ai_extraction",
+          "confidence": 0.94,
+          "requiresReview": false
+        },
+        {
+          "designation": "C",
+          "value": 95.5,
+          "tolerance": {
+            "upper": 0.15,
+            "lower": -0.15
+          },
+          "method": "ai_extraction",
+          "confidence": 0.90,
+          "requiresReview": false
+        },
+        {
+          "designation": "D",
+          "value": 70.0,
+          "tolerance": {
+            "upper": 0.1,
+            "lower": -0.1
+          },
+          "method": "ai_extraction",
+          "confidence": 0.92,
+          "requiresReview": false
+        },
+        {
+          "designation": "E",
+          "value": 50.0,
+          "tolerance": {
+            "upper": 0.08,
+            "lower": -0.08
+          },
+          "method": "ai_extraction",
+          "confidence": 0.89,
+          "requiresReview": true
+        },
+        {
+          "designation": "F",
+          "value": 35.0,
+          "tolerance": {
+            "upper": 0.05,
+            "lower": -0.05
+          },
+          "method": "ai_extraction",
+          "confidence": 0.95,
+          "requiresReview": false
+        },
+        {
+          "designation": "G",
+          "value": 22.5,
+          "tolerance": {
+            "upper": 0.03,
+            "lower": -0.03
+          },
+          "method": "ai_extraction",
+          "confidence": 0.93,
+          "requiresReview": false
+        },
+        {
+          "designation": "H",
+          "value": 12.0,
+          "tolerance": {
+            "upper": 0.02,
+            "lower": -0.02
+          },
+          "method": "ai_extraction",
+          "confidence": 0.91,
+          "requiresReview": false
+        }
+      ],
+      "extractionStats": {
+        "dimensionsFound": 8,
+        "averageConfidence": 0.925,
+        "processingTime": 3.8,
+        "itemsRequiringReview": 1
+      },
+      "outputs": {
+        "excelFile": "outputs/2211_dimensions.xlsx",
+        "htmlReport": "outputs/2211_report.html"
+      }
+    }
+  ],
+  "processSteps": [
+    {
+      "id": "upload",
+      "label": {
+        "en": "Upload Drawing",
+        "fr": "Télécharger le dessin"
+      },
+      "description": {
+        "en": "Select and upload your technical drawing",
+        "fr": "Sélectionnez et téléchargez votre dessin technique"
+      },
+      "icon": "upload"
+    },
+    {
+      "id": "ocr",
+      "label": {
+        "en": "OCR Processing",
+        "fr": "Traitement OCR"
+      },
+      "description": {
+        "en": "Extract text and dimensions using AI",
+        "fr": "Extraire le texte et les dimensions avec l'IA"
+      },
+      "icon": "scan"
+    },
+    {
+      "id": "validation",
+      "label": {
+        "en": "Validation",
+        "fr": "Validation"
+      },
+      "description": {
+        "en": "Review and verify extracted data",
+        "fr": "Examiner et vérifier les données extraites"
+      },
+      "icon": "check"
+    },
+    {
+      "id": "export",
+      "label": {
+        "en": "Export Results",
+        "fr": "Exporter les résultats"
+      },
+      "description": {
+        "en": "Generate Excel and HTML reports",
+        "fr": "Générer des rapports Excel et HTML"
+      },
+      "icon": "download"
+    },
+    {
+      "id": "review",
+      "label": {
+        "en": "Review Items",
+        "fr": "Éléments à réviser"
+      },
+      "description": {
+        "en": "Items requiring manual verification",
+        "fr": "Éléments nécessitant une vérification manuelle"
+      },
+      "icon": "alert"
+    },
+    {
+      "id": "complete",
+      "label": {
+        "en": "Complete",
+        "fr": "Terminé"
+      },
+      "description": {
+        "en": "Processing completed successfully",
+        "fr": "Traitement terminé avec succès"
+      },
+      "icon": "success"
+    }
+  ],
+  "phases": [
+    {
+      "id": "preparation",
+      "name": {
+        "en": "Preparation",
+        "fr": "Préparation"
+      },
+      "steps": ["upload"],
+      "color": "#3b82f6"
+    },
+    {
+      "id": "processing",
+      "name": {
+        "en": "Processing",
+        "fr": "Traitement"
+      },
+      "steps": ["ocr", "validation"],
+      "color": "#10b981"
+    },
+    {
+      "id": "completion",
+      "name": {
+        "en": "Completion",
+        "fr": "Finalisation"
+      },
+      "steps": ["export", "review", "complete"],
+      "color": "#8b5cf6"
+    }
+  ]
+}
