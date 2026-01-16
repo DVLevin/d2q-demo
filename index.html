@@ -636,6 +636,21 @@
       margin-bottom: 20px;
     }
 
+    .section-badge--highlight {
+      background: linear-gradient(135deg, var(--color-gold), #b8943f);
+      border: none;
+      color: var(--color-base);
+      font-size: 14px;
+      padding: 10px 24px;
+      box-shadow: 0 0 30px rgba(212, 168, 83, 0.4);
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 30px rgba(212, 168, 83, 0.4); }
+      50% { box-shadow: 0 0 50px rgba(212, 168, 83, 0.6); }
+    }
+
     .section-title {
       font-size: 48px;
       font-weight: 700;
@@ -2741,7 +2756,7 @@
             </svg>
           </div>
           <div class="objection-title" id="obj3-title">"Les projets IA échouent"</div>
-          <div class="objection-text" id="obj3-text">80% échouent. Notre approche: Semaine 1 = validation, budget borné (€12-20K), Go/No-Go à chaque phase.</div>
+          <div class="objection-text" id="obj3-text">80% échouent. Notre approche: POC à €3K, Phase 1 à partir de €18K, Go/No-Go à chaque étape.</div>
         </div>
       </div>
     </div>
@@ -2933,7 +2948,7 @@
             <li><span class="feature-check feature-check--pending">O</span> <span id="rm15-f3">Optimisation des prompts</span></li>
             <li><span class="feature-check feature-check--pending">O</span> <span id="rm15-f4">Preparation donnees ML</span></li>
           </ul>
-          <div class="roadmap-price">EUR 9K</div>
+          <div class="roadmap-price">EUR 9-12K</div>
         </div>
 
         <div class="roadmap-card roadmap-card--unique">
@@ -3052,10 +3067,10 @@
   <section class="learning-section" id="learning-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-badge" id="learning-badge">Systeme Intelligent</span>
-        <h2 class="section-title" id="learning-title">Un Systeme Qui S'ameliore Avec Vous</h2>
+        <span class="section-badge section-badge--highlight" id="learning-badge">LA DIFFERENCE CLE</span>
+        <h2 class="section-title" id="learning-title">Un Systeme Qui Apprend de VOS Corrections</h2>
         <p class="section-subtitle" id="learning-subtitle">
-          La difference cle entre D2Q et les solutions statiques
+          Les autres outils oublient vos corrections. D2Q s'en souvient et s'ameliore.
         </p>
       </div>
 
@@ -3064,9 +3079,9 @@
         <div class="learning-column learning-column--static">
           <div class="learning-header">
             <span class="learning-icon">X</span>
-            <h3 class="learning-title" id="learning-static-title">Solutions Statiques</h3>
+            <h3 class="learning-title" id="learning-static-title">Outils Qui N'Apprennent Pas</h3>
           </div>
-          <p class="learning-subtitle" id="learning-static-subtitle">Werk24, LLM generique</p>
+          <p class="learning-subtitle" id="learning-static-subtitle">Vous corrigez, ils oublient, vous re-corrigez...</p>
 
           <div class="learning-flow">
             <div class="learning-step">
@@ -3076,17 +3091,17 @@
             <div class="learning-arrow">v</div>
             <div class="learning-step">
               <span class="learning-step-icon">2</span>
-              <span id="learning-static-s2">Correction manuelle</span>
+              <span id="learning-static-s2">Vous corrigez manuellement</span>
             </div>
             <div class="learning-arrow">v</div>
             <div class="learning-step">
               <span class="learning-step-icon">3</span>
-              <span id="learning-static-s3">Correction perdue</span>
+              <span id="learning-static-s3">Correction perdue a jamais</span>
             </div>
             <div class="learning-arrow">v</div>
             <div class="learning-result">
               <div class="learning-result-value">80%</div>
-              <div class="learning-result-label" id="learning-static-result">Pour toujours</div>
+              <div class="learning-result-label" id="learning-static-result">80% pour toujours</div>
             </div>
           </div>
         </div>
@@ -3411,7 +3426,7 @@
         obj2Title: "\"Ça va remplacer nos équipes\"",
         obj2Text: "Jamais. D2Q est un assistant. L'IA fait le copier-coller, vos experts gardent le contrôle.",
         obj3Title: "\"Les projets IA échouent\"",
-        obj3Text: "80% échouent. Notre approche: Semaine 1 = validation, budget borné (€12-20K), Go/No-Go à chaque phase.",
+        obj3Text: "80% échouent. Notre approche: POC à €3K, Phase 1 à partir de €18K, Go/No-Go à chaque étape.",
         // ROI
         roiTitle: "Calculez Votre Gain",
         roiCurrent: "Actuellement",
@@ -3510,15 +3525,15 @@
         roiResultLabelAnnual: "Economies annuelles",
         roiPaybackText: "Rentabilise en",
         // Learning section
-        learningBadge: "Systeme Intelligent",
-        learningTitle: "Un Systeme Qui S'ameliore Avec Vous",
-        learningSubtitle: "La difference cle entre D2Q et les solutions statiques",
-        learningStaticTitle: "Solutions Statiques",
-        learningStaticSubtitle: "Werk24, LLM generique",
+        learningBadge: "LA DIFFERENCE CLE",
+        learningTitle: "Un Systeme Qui Apprend de VOS Corrections",
+        learningSubtitle: "Les autres outils oublient vos corrections. D2Q s'en souvient et s'ameliore.",
+        learningStaticTitle: "Outils Qui N'Apprennent Pas",
+        learningStaticSubtitle: "Vous corrigez, ils oublient, vous re-corrigez...",
         learningStaticS1: "Erreur detectee",
-        learningStaticS2: "Correction manuelle",
-        learningStaticS3: "Correction perdue",
-        learningStaticResult: "Pour toujours",
+        learningStaticS2: "Vous corrigez manuellement",
+        learningStaticS3: "Correction perdue a jamais",
+        learningStaticResult: "80% pour toujours",
         learningSmartTitle: "Notre Approche (D2Q)",
         learningSmartSubtitle: "Apprentissage continu",
         learningSmartS1: "Erreur detectee",
@@ -3589,7 +3604,7 @@
         obj2Title: "\"It will replace our team\"",
         obj2Text: "Never. D2Q is an assistant. AI does the copy-paste, your experts keep control.",
         obj3Title: "\"AI projects fail\"",
-        obj3Text: "80% do fail. Our approach: Week 1 = validation, bounded budget (€12-20K), Go/No-Go at each phase.",
+        obj3Text: "80% do fail. Our approach: €3K POC, Phase 1 from €18K, Go/No-Go at each step.",
         // ROI
         roiTitle: "Calculate Your Savings",
         roiCurrent: "Currently",
@@ -3688,15 +3703,15 @@
         roiResultLabelAnnual: "Annual savings",
         roiPaybackText: "Payback in",
         // Learning section
-        learningBadge: "Intelligent System",
-        learningTitle: "A System That Improves With You",
-        learningSubtitle: "The key difference between D2Q and static solutions",
-        learningStaticTitle: "Static Solutions",
-        learningStaticSubtitle: "Werk24, Generic LLM",
+        learningBadge: "THE KEY DIFFERENCE",
+        learningTitle: "A System That Learns From YOUR Corrections",
+        learningSubtitle: "Other tools forget your corrections. D2Q remembers and improves.",
+        learningStaticTitle: "Tools That Never Learn",
+        learningStaticSubtitle: "You correct, they forget, you correct again...",
         learningStaticS1: "Error detected",
-        learningStaticS2: "Manual correction",
-        learningStaticS3: "Correction lost",
-        learningStaticResult: "Forever",
+        learningStaticS2: "You correct manually",
+        learningStaticS3: "Correction lost forever",
+        learningStaticResult: "80% forever",
         learningSmartTitle: "Our Approach (D2Q)",
         learningSmartSubtitle: "Continuous learning",
         learningSmartS1: "Error detected",
