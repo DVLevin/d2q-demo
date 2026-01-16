@@ -161,6 +161,182 @@
       backdrop-filter: blur(10px);
     }
 
+    /* ============================================
+       TRUST BANNER
+       ============================================ */
+
+    .trust-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1001;
+      background: linear-gradient(90deg, var(--color-surface) 0%, var(--color-surface-elevated) 50%, var(--color-surface) 100%);
+      border-bottom: 1px solid var(--color-border-subtle);
+      padding: 8px 0;
+    }
+
+    .trust-banner-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      font-size: 13px;
+      color: var(--color-text-secondary);
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trust-icon {
+      width: 14px;
+      height: 14px;
+      color: var(--color-success);
+    }
+
+    .trust-divider {
+      color: var(--color-border);
+    }
+
+    @media (max-width: 768px) {
+      .trust-banner-content {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 11px;
+      }
+      .trust-divider {
+        display: none;
+      }
+    }
+
+    /* Adjust header position for trust banner */
+    .header {
+      top: 36px;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        top: 72px;
+      }
+    }
+
+    /* ============================================
+       OBJECTION KILLER SECTION
+       ============================================ */
+
+    .objection-section {
+      padding: 80px 0;
+      background: var(--color-surface);
+      position: relative;
+      z-index: 2;
+    }
+
+    .objection-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .objection-card {
+      background: var(--color-surface-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      transition: all 0.3s var(--ease-out-expo);
+    }
+
+    .objection-card:hover {
+      border-color: var(--color-cyan);
+      transform: translateY(-4px);
+    }
+
+    .objection-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 16px;
+      background: rgba(6, 182, 212, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-cyan);
+    }
+
+    .objection-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-gold);
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .objection-text {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .objection-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ============================================
+       VALUE PILLARS
+       ============================================ */
+
+    .value-pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+      margin-bottom: 32px;
+    }
+
+    .value-pillar {
+      text-align: center;
+      padding: 20px 16px;
+      background: rgba(212, 168, 83, 0.05);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 12px;
+      transition: all 0.3s var(--ease-out-expo);
+    }
+
+    .value-pillar:hover {
+      border-color: var(--color-gold);
+      background: rgba(212, 168, 83, 0.1);
+    }
+
+    .value-pillar-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .value-pillar-text {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      font-weight: 500;
+    }
+
+    .value-pillar:first-child .value-pillar-text {
+      color: var(--color-gold);
+    }
+
+    @media (max-width: 768px) {
+      .value-pillars {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     .header-content {
       display: flex;
       justify-content: space-between;
@@ -1243,6 +1419,21 @@
       color: var(--color-gold);
     }
 
+    .roadmap-card--unique {
+      border-color: var(--color-cyan);
+      border-width: 2px;
+    }
+
+    .unique-badge {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-cyan);
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
     .roadmap-title {
       font-size: 24px;
       font-weight: 700;
@@ -1401,6 +1592,26 @@
   </style>
 </head>
 <body>
+  <!-- Trust Banner -->
+  <div class="trust-banner">
+    <div class="trust-banner-content">
+      <span class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+        <span id="trust-industry">Werk24 prouve 95% de précision</span>
+      </span>
+      <span class="trust-divider">|</span>
+      <span class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+        <span id="trust-sovereignty">🇨🇭 Vos données restent en Suisse</span>
+      </span>
+      <span class="trust-divider">|</span>
+      <span class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+        <span id="trust-validation">Validation humaine intégrée</span>
+      </span>
+    </div>
+  </div>
+
   <!-- Animated Blueprint Background -->
   <div class="blueprint-bg"></div>
 
@@ -1460,11 +1671,31 @@
         </div>
 
         <button class="cta-button" onclick="scrollToDemo()">
-          <span id="cta-text">Voir la Magie</span>
+          <span id="cta-text">Tester le Processus</span>
           <svg class="cta-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M12 5v14M19 12l-7 7-7-7"/>
           </svg>
         </button>
+
+        <!-- Value Pillars -->
+        <div class="value-pillars">
+          <div class="value-pillar">
+            <div class="value-pillar-icon">🎯</div>
+            <div class="value-pillar-text" id="value-consistency">Même processus. Chaque fois.</div>
+          </div>
+          <div class="value-pillar">
+            <div class="value-pillar-icon">👁️</div>
+            <div class="value-pillar-text" id="value-errors">Deux regards sur chaque dimension</div>
+          </div>
+          <div class="value-pillar">
+            <div class="value-pillar-icon">🧠</div>
+            <div class="value-pillar-text" id="value-knowledge">Expertise systematisée</div>
+          </div>
+          <div class="value-pillar">
+            <div class="value-pillar-icon">⚡</div>
+            <div class="value-pillar-text" id="value-speed">30 min → 30 sec (bonus)</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1567,6 +1798,48 @@
     </div>
   </div>
 
+  <!-- Objection Killer Section -->
+  <section class="objection-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="obj-title">Vos Questions Légitimes</h2>
+      </div>
+      <div class="objection-grid">
+        <div class="objection-card">
+          <div class="objection-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 8v4M12 16h.01"/>
+            </svg>
+          </div>
+          <div class="objection-title" id="obj1-title">"L'IA fait des erreurs"</div>
+          <div class="objection-text" id="obj1-text">C'est vrai. C'est pourquoi chaque dimension affiche un score de confiance. &lt; 90%? Révision humaine obligatoire.</div>
+        </div>
+        <div class="objection-card">
+          <div class="objection-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="objection-title" id="obj2-title">"Ça va remplacer nos équipes"</div>
+          <div class="objection-text" id="obj2-text">Jamais. D2Q est un assistant. L'IA fait le copier-coller, vos experts gardent le contrôle.</div>
+        </div>
+        <div class="objection-card">
+          <div class="objection-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <div class="objection-title" id="obj3-title">"Les projets IA échouent"</div>
+          <div class="objection-text" id="obj3-text">80% échouent. Notre approche: Semaine 1 = validation, budget borné (€12-20K), Go/No-Go à chaque phase.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Process Section -->
   <section class="process-section">
     <div class="container">
@@ -1636,8 +1909,9 @@
           <div class="roadmap-price">€15-25K</div>
         </div>
 
-        <div class="roadmap-card">
+        <div class="roadmap-card roadmap-card--unique">
           <span class="roadmap-badge" id="rm2-badge">Phase 2</span>
+          <span class="unique-badge" id="unique-badge-2">🏆 Exclusif D2Q</span>
           <h3 class="roadmap-title" id="rm2-title">Recherche de Similitudes</h3>
           <div class="roadmap-timeline" id="rm2-timeline">+4-6 semaines</div>
           <ul class="roadmap-features">
@@ -1649,8 +1923,9 @@
           <div class="roadmap-price">€20-30K</div>
         </div>
 
-        <div class="roadmap-card">
+        <div class="roadmap-card roadmap-card--unique">
           <span class="roadmap-badge" id="rm3-badge">Phase 3</span>
+          <span class="unique-badge" id="unique-badge-3">🏆 Exclusif D2Q</span>
           <h3 class="roadmap-title" id="rm3-title">Adaptation des Devis</h3>
           <div class="roadmap-timeline" id="rm3-timeline">+4-6 semaines</div>
           <ul class="roadmap-features">
@@ -1810,13 +2085,39 @@
       fr: {
         logoTagline: "Drawing to Quality Control",
         heroBadge: "Phase 1 Disponible",
-        heroLine1: "Du Plan au",
-        heroLine2: "Contrôle Qualité",
-        heroLine3: "en Quelques Secondes",
-        heroSub: "Extraction automatique des dimensions et tolérances par IA. Génération instantanée de Fiches de Contrôle.",
+        heroLine1: "Extraction Cohérente.",
+        heroLine2: "Erreurs Réduites.",
+        heroLine3: "Expertise Capturée.",
+        heroSub: "L'IA extrait ~80% automatiquement. Vos ingénieurs vérifient le reste. Résultat: une Fiche de Contrôle fiable et standardisée.",
         painOld: "Par plan, manuellement",
         painNew: "Avec D2Q",
-        ctaText: "Voir la Magie",
+        ctaText: "Tester le Processus",
+        // Trust elements
+        trustIndustry: "Werk24 prouve 95% de précision",
+        trustSovereignty: "Vos données restent en Suisse",
+        trustValidation: "Validation humaine intégrée",
+        // Value propositions
+        valueConsistency: "Même processus. Chaque fois.",
+        valueErrors: "Deux regards sur chaque dimension",
+        valueKnowledge: "Expertise systematisée",
+        valueSpeed: "30 min → 30 sec (bonus)",
+        // Objection killers
+        objTitle: "Vos Questions Légitimes",
+        obj1Title: "\"L'IA fait des erreurs\"",
+        obj1Text: "C'est vrai. C'est pourquoi chaque dimension affiche un score de confiance. < 90%? Révision humaine obligatoire.",
+        obj2Title: "\"Ça va remplacer nos équipes\"",
+        obj2Text: "Jamais. D2Q est un assistant. L'IA fait le copier-coller, vos experts gardent le contrôle.",
+        obj3Title: "\"Les projets IA échouent\"",
+        obj3Text: "80% échouent. Notre approche: Semaine 1 = validation, budget borné (€12-20K), Go/No-Go à chaque phase.",
+        // ROI
+        roiTitle: "Calculez Votre Gain",
+        roiCurrent: "Actuellement",
+        roiWithD2Q: "Avec D2Q",
+        roiSavings: "Économie",
+        roiPerWeek: "/semaine",
+        roiPerYear: "/an",
+        // Phases unique
+        phaseUnique: "Exclusif D2Q — Aucun concurrent ne l'offre",
         demoBadge: "Mode Démo",
         demoTitle: "Sélectionnez un Plan",
         demoSubtitle: "Cliquez pour lancer l'extraction IA en temps réel",
@@ -1868,13 +2169,39 @@
       en: {
         logoTagline: "Drawing to Quality Control",
         heroBadge: "Phase 1 Available",
-        heroLine1: "From Drawing to",
-        heroLine2: "Quality Control",
-        heroLine3: "in Seconds",
-        heroSub: "Automated AI extraction of dimensions and tolerances. Instant QC Table generation.",
+        heroLine1: "Consistent Extraction.",
+        heroLine2: "Fewer Errors.",
+        heroLine3: "Captured Expertise.",
+        heroSub: "AI extracts ~80% automatically. Your engineers verify the rest. Result: reliable, standardized QC Tables.",
         painOld: "Per drawing, manually",
         painNew: "With D2Q",
-        ctaText: "See the Magic",
+        ctaText: "Test the Process",
+        // Trust elements
+        trustIndustry: "Werk24 proves 95% accuracy",
+        trustSovereignty: "Your data stays in Switzerland",
+        trustValidation: "Built-in human validation",
+        // Value propositions
+        valueConsistency: "Same process. Every time.",
+        valueErrors: "Two eyes on every dimension",
+        valueKnowledge: "Systematized expertise",
+        valueSpeed: "30 min → 30 sec (bonus)",
+        // Objection killers
+        objTitle: "Your Legitimate Questions",
+        obj1Title: "\"AI makes mistakes\"",
+        obj1Text: "True. That's why each dimension shows a confidence score. < 90%? Mandatory human review.",
+        obj2Title: "\"It will replace our team\"",
+        obj2Text: "Never. D2Q is an assistant. AI does the copy-paste, your experts keep control.",
+        obj3Title: "\"AI projects fail\"",
+        obj3Text: "80% do fail. Our approach: Week 1 = validation, bounded budget (€12-20K), Go/No-Go at each phase.",
+        // ROI
+        roiTitle: "Calculate Your Savings",
+        roiCurrent: "Currently",
+        roiWithD2Q: "With D2Q",
+        roiSavings: "Savings",
+        roiPerWeek: "/week",
+        roiPerYear: "/year",
+        // Phases unique
+        phaseUnique: "D2Q Exclusive — No competitor offers this",
         demoBadge: "Demo Mode",
         demoTitle: "Select a Drawing",
         demoSubtitle: "Click to launch real-time AI extraction",
@@ -2116,7 +2443,7 @@
       document.getElementById('dimensions-title').textContent = t.dimensionsTitle;
       const tbody = document.getElementById('dimensions-body');
       tbody.innerHTML = drawing.dimensions.map((dim, i) => {
-        const confClass = dim.confidence >= 90 ? 'high' : (dim.confidence >= 80 ? 'medium' : 'low');
+        const confClass = dim.confidence >= 90 ? 'high' : (dim.confidence >= 75 ? 'medium' : 'low');
         return `
           <tr style="animation-delay: ${0.5 + i * 0.05}s">
             <td>${dim.designation}</td>
@@ -2203,6 +2530,24 @@
         'pain-old': t.painOld,
         'pain-new': t.painNew,
         'cta-text': t.ctaText,
+        // Trust banner
+        'trust-industry': t.trustIndustry,
+        'trust-sovereignty': '🇨🇭 ' + t.trustSovereignty,
+        'trust-validation': t.trustValidation,
+        // Value pillars
+        'value-consistency': t.valueConsistency,
+        'value-errors': t.valueErrors,
+        'value-knowledge': t.valueKnowledge,
+        'value-speed': t.valueSpeed,
+        // Objection section
+        'obj-title': t.objTitle,
+        'obj1-title': t.obj1Title,
+        'obj1-text': t.obj1Text,
+        'obj2-title': t.obj2Title,
+        'obj2-text': t.obj2Text,
+        'obj3-title': t.obj3Title,
+        'obj3-text': t.obj3Text,
+        // Demo
         'demo-badge': t.demoBadge,
         'demo-title': t.demoTitle,
         'demo-subtitle': t.demoSubtitle,
@@ -2219,6 +2564,8 @@
         'rm1-badge': t.rm1Badge, 'rm1-title': t.rm1Title, 'rm1-timeline': t.rm1Timeline,
         'rm2-badge': t.rm2Badge, 'rm2-title': t.rm2Title, 'rm2-timeline': t.rm2Timeline,
         'rm3-badge': t.rm3Badge, 'rm3-title': t.rm3Title, 'rm3-timeline': t.rm3Timeline,
+        'unique-badge-2': '🏆 ' + t.phaseUnique,
+        'unique-badge-3': '🏆 ' + t.phaseUnique,
         'roadmap-cta': t.roadmapCta,
         'footer-disclaimer': t.footerDisclaimer,
         'th-designation': t.thDesignation,
