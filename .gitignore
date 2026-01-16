@@ -18,7 +18,7 @@ node_modules/
 /tmp/
 *.tmp
 
-# Development tools
+# Development tools (Claude Code)
 .claude/
 .claude-flow/
 .hive-mind/
@@ -30,3 +30,8 @@ claude-flow.bat
 claude-flow.ps1
 claude-flow.config.json
 .mcp.json
+CLAUDE.md
+
+# Internal planning docs
+product_vision_verified.md
+site_enhancement_proposal.md

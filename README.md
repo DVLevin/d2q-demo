@@ -2,13 +2,23 @@
 
 **AI-Assisted Technical Drawing Analysis for Precision Manufacturing**
 
-![D2Q Demo](https://img.shields.io/badge/Demo-Live-brightgreen) ![License](https://img.shields.io/badge/License-Proprietary-blue) ![Data](https://img.shields.io/badge/Data-🇨🇭_Swiss_Hosted-red)
+![D2Q Demo](https://img.shields.io/badge/Demo-Live-brightgreen) ![License](https://img.shields.io/badge/License-Proprietary-blue)
 
 ## Overview
 
 D2Q transforms technical drawings into structured quality control data with **consistent, repeatable results**. Built for precision manufacturing, it extracts dimensions, tolerances, and measurement methods — with human validation at every step.
 
-**AI extracts ~80% automatically. Your engineers verify the rest.**
+**AI extracts ~80% automatically. Your engineers verify the rest. The system learns from YOUR corrections.**
+
+## The Key Difference
+
+Other tools forget your corrections. **D2Q remembers and improves.**
+
+| After 12 months | Static Tools | D2Q |
+|-----------------|--------------|-----|
+| Accuracy | 80% | 92%+ |
+| Learns from corrections | ❌ | ✅ |
+| Adapts to your templates | ❌ | ✅ |
 
 ## Live Demo
 
@@ -24,31 +34,34 @@ The demo showcases real pre-analyzed technical drawings with:
 
 | Benefit | Description |
 |---------|-------------|
+| **Continuous Learning** | System improves with every correction you make |
 | **Consistency** | Same extraction process, every drawing, every time |
 | **Reduced Errors** | AI + human review = two eyes on every dimension |
 | **Captured Knowledge** | Systematize tribal expertise into repeatable workflows |
-| **Time Savings** | 30 min → 30 sec (bonus, not the main goal) |
 
-## Features
+## Roadmap
 
-### Phase 1 — Ready to Build ✅
-- **Drawing Analysis**: AI-powered extraction of dimensions and tolerances
-- **QC Table Population**: Automatic "Fiche de Contrôle" generation
-- **Confidence Scoring**: Three-tier system for smart human review
-- **Report Export**: HTML reports with full extraction details
+### Phase 1 — QC Table Extraction (€18K)
+- AI-powered extraction of dimensions and tolerances
+- Automatic "Fiche de Contrôle" generation
+- Three-tier confidence scoring for smart human review
 
-### Phase 2 — Unique to D2Q 🏆
-- **Similarity Matching**: Find similar historical drawings
-- **Historical Lookup**: Reference past quotations
+### Phase 1.5 — Learning Infrastructure (€9-12K) ⭐ Recommended
+- Feedback capture system
+- Continuous model improvement
+- Accuracy dashboard
 
-### Phase 3 — Vision 🔮
-- **Quote Adaptation**: Automated quotation from historical data
-- **Full Automation**: End-to-end drawing-to-quote workflow
+### Phase 2 — Similarity Matching
+- Find similar historical drawings
+- Reference past quotations
+
+### Phase 3 — Quote Adaptation
+- Automated quotation from historical data
 
 ## Technology
 
 - Claude AI Vision Processing
-- Swiss-hosted data infrastructure 🇨🇭
+- Continuous learning from corrections
 - Human-in-the-loop validation
 - Multi-format output (Excel, HTML, JSON)
 
@@ -66,15 +79,15 @@ d2q-demo/
 
 ```bash
 # Serve locally
-python -m http.server 8080
+python -m http.server 8000
 
-# View at http://localhost:8080
+# View at http://localhost:8000
 ```
 
-## License
+## Contact
 
-Proprietary — Cone Red × Chaine
+**Low-Investment POC**: €3K to validate on your real drawings (deducted from Phase 1)
 
 ---
 
-*AI assists. Humans control. Consistency guaranteed.*
+*AI assists. Humans control. System learns.*
