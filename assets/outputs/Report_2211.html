@@ -4,40 +4,138 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rapport D2Q - Drawing 2211</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
+    /* ============================================
+       D2Q REPORT — REBEL EDITION
+       Matches website cinematic industrial theme
+       ============================================ */
+
+    *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    :root {
+      /* Industrial Dark Palette (from website) */
+      --color-void: #000000;
+      --color-base: #0a0e14;
+      --color-surface: #111827;
+      --color-surface-elevated: #1a2332;
+      --color-border: #2d3a4a;
+      --color-border-subtle: #1e2836;
+
+      /* Text */
+      --color-text: #f1f5f9;
+      --color-text-secondary: #94a3b8;
+      --color-text-muted: #64748b;
+
+      /* Accent — Precision Gold */
+      --color-gold: #d4a853;
+      --color-gold-light: #e8c87a;
+      --color-gold-dark: #b8923d;
+
+      /* Accent — Technical Cyan */
+      --color-cyan: #06b6d4;
+      --color-cyan-glow: rgba(6, 182, 212, 0.4);
+
+      /* Semantic */
+      --color-success: #10b981;
+      --color-warning: #f59e0b;
+      --color-danger: #ef4444;
+
+      /* Typography (from website) */
+      --font-display: 'Space Grotesk', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Shadows */
+      --shadow-glow-gold: 0 0 30px rgba(212, 168, 83, 0.3);
+      --shadow-glow-cyan: 0 0 20px rgba(6, 182, 212, 0.2);
+      --shadow-dramatic: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    }
+
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      background: #0a0f1a;
-      padding: 40px 20px;
+      font-family: var(--font-display);
+      background: var(--color-base);
+      color: var(--color-text);
       line-height: 1.6;
-      color: #f1f5f9;
       min-height: 100vh;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    /* Blueprint Grid Background (from website) */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.04;
+      background-image:
+        linear-gradient(var(--color-cyan) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-cyan) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* Scanning line animation */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--color-cyan), transparent);
+      z-index: 1000;
+      animation: scanLine 4s ease-in-out infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes scanLine {
+      0%, 100% { transform: translateY(0); opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.6; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    /* Print styles - remove animations */
+    @media print {
+      body::before, body::after { display: none; }
+      body { background: white; color: black; }
+      .report { box-shadow: none; border: 1px solid #ccc; }
     }
 
     .report {
       max-width: 900px;
       margin: 0 auto;
-      background: linear-gradient(180deg, #111827 0%, #0d1117 100%);
+      background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-base) 100%);
       border-radius: 16px;
-      border: 1px solid rgba(212, 168, 83, 0.2);
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 0 60px rgba(212, 168, 83, 0.05);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-dramatic), var(--shadow-glow-gold);
+      overflow: hidden;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-elevated) 50%, var(--color-surface) 100%);
+      padding: 48px 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--color-border);
+      position: relative;
       overflow: hidden;
     }
 
-    .header {
-      background: linear-gradient(135deg, #111827 0%, #1a2332 50%, #111827 100%);
-      padding: 48px 40px;
-      text-align: center;
-      border-bottom: 1px solid rgba(212, 168, 83, 0.3);
-      position: relative;
-    }
-
+    /* Gold top line */
     .header::before {
       content: '';
       position: absolute;
@@ -45,47 +143,67 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(90deg, transparent, #d4a853, transparent);
+      background: linear-gradient(90deg, transparent 0%, var(--color-gold) 50%, transparent 100%);
+    }
+
+    /* Subtle corner accents */
+    .header::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-top: 2px solid var(--color-cyan);
+      border-right: 2px solid var(--color-cyan);
+      opacity: 0.3;
     }
 
     .logo {
-      width: 72px;
-      height: 72px;
-      background: linear-gradient(135deg, #d4a853 0%, #e8c87a 50%, #d4a853 100%);
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 50%, var(--color-gold) 100%);
       border-radius: 12px;
-      margin: 0 auto 20px;
+      margin: 0 auto 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
-      font-weight: 800;
-      color: #111827;
-      letter-spacing: -1px;
-      box-shadow: 0 8px 32px rgba(212, 168, 83, 0.3);
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--color-surface);
+      letter-spacing: -2px;
+      box-shadow: var(--shadow-glow-gold);
+      position: relative;
     }
 
     .header h1 {
+      font-family: var(--font-display);
       font-size: 28px;
       font-weight: 700;
-      color: #f1f5f9;
+      color: var(--color-text);
       margin-bottom: 8px;
       letter-spacing: -0.5px;
     }
 
     .drawing-number {
-      font-size: 20px;
-      color: #d4a853;
+      font-family: var(--font-mono);
+      font-size: 22px;
+      color: var(--color-cyan);
       font-weight: 600;
       margin-bottom: 12px;
+      text-shadow: var(--shadow-glow-cyan);
     }
 
     .date {
-      font-size: 13px;
-      color: #64748b;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-text-muted);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
     }
 
+    /* Content */
     .content {
       padding: 40px;
     }
@@ -95,72 +213,99 @@
     }
 
     .section-title {
-      font-size: 16px;
+      font-family: var(--font-display);
+      font-size: 14px;
       font-weight: 700;
-      color: #d4a853;
+      color: var(--color-gold);
       margin-bottom: 20px;
       padding-bottom: 12px;
-      border-bottom: 1px solid rgba(212, 168, 83, 0.2);
+      border-bottom: 1px solid var(--color-border-subtle);
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
+    .section-title::before {
+      content: '';
+      width: 4px;
+      height: 16px;
+      background: var(--color-gold);
+      border-radius: 2px;
+    }
+
+    /* Info Grid */
     .info-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 16px;
-      margin-bottom: 30px;
     }
 
     .info-item {
-      background: linear-gradient(135deg, #1a2332 0%, #111827 100%);
+      background: var(--color-surface-elevated);
       padding: 18px;
       border-radius: 10px;
-      border: 1px solid rgba(212, 168, 83, 0.1);
+      border: 1px solid var(--color-border-subtle);
       transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .info-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--color-cyan);
+      border-radius: 10px 0 0 10px;
+      opacity: 0.5;
     }
 
     .info-item:hover {
-      border-color: rgba(212, 168, 83, 0.3);
+      border-color: var(--color-cyan);
       transform: translateY(-2px);
+      box-shadow: var(--shadow-glow-cyan);
     }
 
     .info-label {
+      font-family: var(--font-display);
       font-size: 10px;
-      font-weight: 700;
-      color: #64748b;
+      font-weight: 600;
+      color: var(--color-text-muted);
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 6px;
     }
 
     .info-value {
-      font-size: 15px;
+      font-family: var(--font-mono);
+      font-size: 14px;
       font-weight: 600;
-      color: #f1f5f9;
+      color: var(--color-text);
     }
 
+    /* Stats Grid */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
-      margin-bottom: 30px;
     }
 
     @media (max-width: 768px) {
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     .stat-card {
-      background: linear-gradient(135deg, #1a2332 0%, #111827 100%);
+      background: var(--color-surface-elevated);
       padding: 24px 16px;
       border-radius: 12px;
       text-align: center;
-      border: 1px solid rgba(212, 168, 83, 0.15);
+      border: 1px solid var(--color-border-subtle);
       position: relative;
       overflow: hidden;
+      transition: all 0.3s ease;
     }
 
     .stat-card::before {
@@ -170,171 +315,263 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: linear-gradient(90deg, transparent, #d4a853, transparent);
+      background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-glow-gold);
     }
 
     .stat-card.highlight {
-      border-color: rgba(212, 168, 83, 0.4);
-      background: linear-gradient(135deg, rgba(212, 168, 83, 0.1) 0%, #111827 100%);
+      border-color: var(--color-gold);
+      background: linear-gradient(180deg, rgba(212, 168, 83, 0.1) 0%, var(--color-surface-elevated) 100%);
+    }
+
+    .stat-card.highlight .stat-value {
+      text-shadow: var(--shadow-glow-gold);
+    }
+
+    .stat-card.success::before {
+      background: linear-gradient(90deg, transparent, var(--color-success), transparent);
+    }
+
+    .stat-card.success .stat-value {
+      color: var(--color-success);
     }
 
     .stat-card.warning {
-      border-color: rgba(251, 191, 36, 0.4);
+      border-color: rgba(245, 158, 11, 0.4);
     }
 
     .stat-card.warning::before {
-      background: linear-gradient(90deg, transparent, #fbbf24, transparent);
-    }
-
-    .stat-value {
-      font-size: 32px;
-      font-weight: 700;
-      color: #d4a853;
-      margin-bottom: 6px;
+      background: linear-gradient(90deg, transparent, var(--color-warning), transparent);
     }
 
     .stat-card.warning .stat-value {
-      color: #fbbf24;
+      color: var(--color-warning);
+    }
+
+    .stat-value {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--color-gold);
+      margin-bottom: 6px;
     }
 
     .stat-label {
-      font-size: 11px;
-      color: #94a3b8;
+      font-family: var(--font-display);
+      font-size: 10px;
+      color: var(--color-text-secondary);
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
     }
 
+    /* Table */
     .table-container {
       overflow-x: auto;
       border-radius: 12px;
-      border: 1px solid rgba(212, 168, 83, 0.15);
-      background: #0d1117;
+      border: 1px solid var(--color-border-subtle);
+      background: var(--color-base);
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 14px;
     }
 
     thead {
-      background: linear-gradient(135deg, #1a2332 0%, #111827 100%);
+      background: var(--color-surface);
     }
 
     th {
+      font-family: var(--font-display);
       padding: 16px 20px;
       text-align: left;
       font-weight: 700;
-      color: #d4a853;
+      color: var(--color-gold);
       text-transform: uppercase;
-      font-size: 11px;
-      letter-spacing: 1px;
-      border-bottom: 1px solid rgba(212, 168, 83, 0.2);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      border-bottom: 1px solid var(--color-border);
     }
 
     td {
+      font-family: var(--font-mono);
       padding: 16px 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      color: #f1f5f9;
+      border-bottom: 1px solid var(--color-border-subtle);
+      color: var(--color-text);
+      font-size: 14px;
+    }
+
+    td:first-child {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--color-cyan);
     }
 
     tr:last-child td {
       border-bottom: none;
     }
 
+    tr {
+      transition: background 0.2s ease;
+    }
+
     tr:hover {
-      background: rgba(212, 168, 83, 0.03);
+      background: rgba(6, 182, 212, 0.05);
     }
 
     tr.review-required {
-      background: rgba(251, 191, 36, 0.08);
+      background: rgba(245, 158, 11, 0.08);
     }
 
     tr.review-required:hover {
-      background: rgba(251, 191, 36, 0.12);
+      background: rgba(245, 158, 11, 0.12);
     }
 
+    tr.review-required td:first-child {
+      color: var(--color-warning);
+    }
+
+    /* Badges */
     .badge {
-      display: inline-block;
-      padding: 5px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
       border-radius: 20px;
+      font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.5px;
     }
 
+    .badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
     .badge-high {
-      background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.1) 100%);
-      color: #22c55e;
-      border: 1px solid rgba(34, 197, 94, 0.3);
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--color-success);
+      border: 1px solid rgba(16, 185, 129, 0.3);
     }
 
     .badge-medium {
-      background: linear-gradient(135deg, rgba(251, 191, 36, 0.2) 0%, rgba(251, 191, 36, 0.1) 100%);
-      color: #fbbf24;
-      border: 1px solid rgba(251, 191, 36, 0.3);
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--color-warning);
+      border: 1px solid rgba(245, 158, 11, 0.3);
     }
 
     .badge-low {
-      background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.1) 100%);
-      color: #ef4444;
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--color-danger);
       border: 1px solid rgba(239, 68, 68, 0.3);
     }
 
+    /* Notes */
     .notes-list {
       list-style: none;
     }
 
     .note-item {
       padding: 18px 20px;
-      background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(251, 191, 36, 0.05) 100%);
-      border-left: 3px solid #fbbf24;
+      background: rgba(245, 158, 11, 0.08);
+      border-left: 3px solid var(--color-warning);
       border-radius: 0 10px 10px 0;
       margin-bottom: 12px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .note-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--color-warning);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .note-content {
+      flex: 1;
     }
 
     .note-dimension {
+      font-family: var(--font-display);
       font-weight: 700;
-      color: #fbbf24;
-      margin-bottom: 6px;
+      color: var(--color-warning);
+      margin-bottom: 4px;
       font-size: 14px;
     }
 
     .note-text {
-      color: #94a3b8;
+      font-family: var(--font-display);
+      color: var(--color-text-secondary);
       font-size: 13px;
     }
 
+    /* Footer */
     .footer {
-      background: linear-gradient(135deg, #0d1117 0%, #111827 100%);
+      background: var(--color-base);
       padding: 24px 40px;
       text-align: center;
-      border-top: 1px solid rgba(212, 168, 83, 0.15);
+      border-top: 1px solid var(--color-border-subtle);
+      position: relative;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-gold), var(--color-cyan), var(--color-gold));
     }
 
     .footer-brand {
+      font-family: var(--font-display);
       font-size: 13px;
-      color: #64748b;
+      color: var(--color-text-muted);
       margin-bottom: 4px;
     }
 
     .footer-brand strong {
-      color: #d4a853;
+      color: var(--color-gold);
       font-weight: 700;
     }
 
     .footer-date {
+      font-family: var(--font-mono);
       font-size: 11px;
-      color: #475569;
+      color: var(--color-text-muted);
+      letter-spacing: 1px;
     }
 
-    .powered-by {
-      margin-top: 12px;
+    .footer-tagline {
+      margin-top: 16px;
+      font-family: var(--font-display);
       font-size: 10px;
-      color: #475569;
+      color: var(--color-text-muted);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 3px;
     }
   </style>
 </head>
@@ -343,8 +580,8 @@
     <div class="header">
       <div class="logo">D2Q</div>
       <h1>Rapport d'Extraction</h1>
-      <div class="drawing-number">Drawing 2211</div>
-      <div class="date">15 Janvier 2026</div>
+      <div class="drawing-number">DRAWING_2211</div>
+      <div class="date">15 Janvier 2026 • 15:29:37 UTC</div>
     </div>
 
     <div class="content">
@@ -364,12 +601,12 @@
             <div class="info-value">BRASS C36000</div>
           </div>
           <div class="info-item">
-            <div class="info-label">Numero de Piece</div>
+            <div class="info-label">Reference</div>
             <div class="info-value">PA-2211-005</div>
           </div>
           <div class="info-item">
             <div class="info-label">Revision</div>
-            <div class="info-value">B</div>
+            <div class="info-value">REV_B</div>
           </div>
         </div>
       </div>
@@ -381,9 +618,9 @@
             <div class="stat-value">8</div>
             <div class="stat-label">Dimensions</div>
           </div>
-          <div class="stat-card">
+          <div class="stat-card success">
             <div class="stat-value">92.5%</div>
-            <div class="stat-label">Confiance Moy.</div>
+            <div class="stat-label">Confiance</div>
           </div>
           <div class="stat-card">
             <div class="stat-value">3.8s</div>
@@ -402,68 +639,68 @@
           <table>
             <thead>
               <tr>
-                <th>Designation</th>
-                <th>Valeur (mm)</th>
+                <th>ID</th>
+                <th>Valeur</th>
                 <th>Tolerance</th>
-                <th>Methode</th>
+                <th>Source</th>
                 <th>Confiance</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>A</strong></td>
-                <td>180.0</td>
-                <td>+0.25 / -0.25</td>
-                <td>AI Extraction</td>
+                <td>DIM_A</td>
+                <td>180.00 mm</td>
+                <td>±0.25</td>
+                <td>AI_EXTRACT</td>
                 <td><span class="badge badge-high">96%</span></td>
               </tr>
               <tr>
-                <td><strong>B</strong></td>
-                <td>140.0</td>
-                <td>+0.2 / -0.2</td>
-                <td>AI Extraction</td>
+                <td>DIM_B</td>
+                <td>140.00 mm</td>
+                <td>±0.20</td>
+                <td>AI_EXTRACT</td>
                 <td><span class="badge badge-high">94%</span></td>
               </tr>
               <tr>
-                <td><strong>C</strong></td>
-                <td>95.5</td>
-                <td>+0.15 / -0.15</td>
-                <td>AI Extraction</td>
+                <td>DIM_C</td>
+                <td>95.50 mm</td>
+                <td>±0.15</td>
+                <td>AI_EXTRACT</td>
                 <td><span class="badge badge-high">90%</span></td>
               </tr>
               <tr>
-                <td><strong>D</strong></td>
-                <td>70.0</td>
-                <td>+0.1 / -0.1</td>
-                <td>AI Extraction</td>
+                <td>DIM_D</td>
+                <td>70.00 mm</td>
+                <td>±0.10</td>
+                <td>AI_EXTRACT</td>
                 <td><span class="badge badge-high">92%</span></td>
               </tr>
               <tr class="review-required">
-                <td><strong>E</strong></td>
-                <td>50.0</td>
-                <td>+0.08 / -0.08</td>
-                <td>AI Extraction</td>
+                <td>DIM_E</td>
+                <td>50.00 mm</td>
+                <td>±0.08</td>
+                <td>AI_EXTRACT</td>
                 <td><span class="badge badge-medium">89%</span></td>
               </tr>
               <tr>
-                <td><strong>F</strong></td>
-                <td>35.0</td>
-                <td>+0.05 / -0.05</td>
-                <td>AI Extraction</td>
+                <td>DIM_F</td>
+                <td>35.00 mm</td>
+                <td>±0.05</td>
+                <td>AI_EXTRACT</td>
                 <td><span class="badge badge-high">95%</span></td>
               </tr>
               <tr>
-                <td><strong>G</strong></td>
-                <td>22.5</td>
-                <td>+0.03 / -0.03</td>
-                <td>AI Extraction</td>
+                <td>DIM_G</td>
+                <td>22.50 mm</td>
+                <td>±0.03</td>
+                <td>AI_EXTRACT</td>
                 <td><span class="badge badge-high">93%</span></td>
               </tr>
               <tr>
-                <td><strong>H</strong></td>
-                <td>12.0</td>
-                <td>+0.02 / -0.02</td>
-                <td>AI Extraction</td>
+                <td>DIM_H</td>
+                <td>12.00 mm</td>
+                <td>±0.02</td>
+                <td>AI_EXTRACT</td>
                 <td><span class="badge badge-high">91%</span></td>
               </tr>
             </tbody>
@@ -472,20 +709,23 @@
       </div>
 
       <div class="section">
-        <h2 class="section-title">Notes et Revisions</h2>
+        <h2 class="section-title">Actions Requises</h2>
         <ul class="notes-list">
           <li class="note-item">
-            <div class="note-dimension">Dimension E</div>
-            <div class="note-text">Cette dimension necessite une verification manuelle (confiance: 89%)</div>
+            <div class="note-icon">!</div>
+            <div class="note-content">
+              <div class="note-dimension">DIM_E — Verification Manuelle</div>
+              <div class="note-text">Score de confiance 89% — en dessous du seuil de validation automatique (90%). Verification humaine requise avant export.</div>
+            </div>
           </li>
         </ul>
       </div>
     </div>
 
     <div class="footer">
-      <div class="footer-brand">Genere automatiquement par <strong>D2Q</strong></div>
-      <div class="footer-date">15 janvier 2026 15:29:37 UTC</div>
-      <div class="powered-by">Cone Red x Chaine</div>
+      <div class="footer-brand">Genere par <strong>D2Q</strong> — Drawing to Quality Control</div>
+      <div class="footer-date">2026-01-15T15:29:37Z</div>
+      <div class="footer-tagline">Cone Red × Chaine</div>
     </div>
   </div>
 </body>
