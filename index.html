@@ -1589,6 +1589,913 @@
         opacity: 0;
       }
     }
+
+    /* ============================================
+       COMPETITOR COMPARISON SECTION
+       ============================================ */
+
+    .comparison-section {
+      padding: 120px 0;
+      background: var(--color-surface);
+      position: relative;
+    }
+
+    .comparison-table-wrapper {
+      overflow-x: auto;
+      margin-top: 48px;
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface-elevated);
+    }
+
+    .comparison-table {
+      width: 100%;
+      min-width: 900px;
+      border-collapse: collapse;
+    }
+
+    .comparison-table thead {
+      background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-elevated) 100%);
+    }
+
+    .comparison-table th {
+      padding: 20px 16px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text);
+      border-bottom: 2px solid var(--color-border);
+      white-space: nowrap;
+    }
+
+    .comparison-table th:first-child {
+      text-align: left;
+      padding-left: 24px;
+    }
+
+    .comparison-table th.highlight-col {
+      background: rgba(212, 168, 83, 0.15);
+      color: var(--color-gold);
+      position: relative;
+    }
+
+    .comparison-table th.highlight-col::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--color-gold);
+    }
+
+    .comparison-table td {
+      padding: 16px;
+      text-align: center;
+      font-size: 14px;
+      border-bottom: 1px solid var(--color-border-subtle);
+      color: var(--color-text-secondary);
+    }
+
+    .comparison-table td:first-child {
+      text-align: left;
+      padding-left: 24px;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .comparison-table td.highlight-col {
+      background: rgba(212, 168, 83, 0.05);
+    }
+
+    .comparison-table tbody tr:hover {
+      background: var(--color-surface-hover);
+    }
+
+    .comparison-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .compare-check {
+      color: var(--color-success);
+      font-size: 18px;
+    }
+
+    .compare-cross {
+      color: var(--color-danger);
+      font-size: 18px;
+    }
+
+    .compare-partial {
+      color: var(--color-warning);
+      font-size: 14px;
+    }
+
+    .honesty-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    @media (max-width: 768px) {
+      .honesty-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .honesty-card {
+      background: var(--color-surface-elevated);
+      border: 2px solid var(--color-border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.3s var(--ease-out-expo);
+    }
+
+    .honesty-card--competitor {
+      border-color: rgba(6, 182, 212, 0.3);
+    }
+
+    .honesty-card--competitor:hover {
+      border-color: var(--color-cyan);
+    }
+
+    .honesty-card--d2q {
+      border-color: rgba(212, 168, 83, 0.3);
+    }
+
+    .honesty-card--d2q:hover {
+      border-color: var(--color-gold);
+    }
+
+    .honesty-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .honesty-card--competitor .honesty-card-title {
+      color: var(--color-cyan);
+    }
+
+    .honesty-card--d2q .honesty-card-title {
+      color: var(--color-gold);
+    }
+
+    .honesty-list {
+      list-style: none;
+    }
+
+    .honesty-list li {
+      padding: 8px 0;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .honesty-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      margin-top: 7px;
+      border-radius: 50%;
+    }
+
+    .honesty-card--competitor .honesty-list li::before {
+      background: var(--color-cyan);
+    }
+
+    .honesty-card--d2q .honesty-list li::before {
+      background: var(--color-gold);
+    }
+
+    /* ============================================
+       LEARNING SYSTEM SECTION
+       ============================================ */
+
+    .learning-section {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .learning-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 48px;
+    }
+
+    @media (max-width: 900px) {
+      .learning-comparison {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .learning-column {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: 24px;
+      padding: 40px;
+      position: relative;
+      transition: all 0.4s var(--ease-out-expo);
+    }
+
+    .learning-column--static {
+      opacity: 0.7;
+      border-color: var(--color-danger);
+      border-style: dashed;
+    }
+
+    .learning-column--smart {
+      border-color: var(--color-success);
+      box-shadow: 0 0 40px rgba(16, 185, 129, 0.1);
+    }
+
+    .learning-column--smart:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 60px rgba(16, 185, 129, 0.2);
+    }
+
+    .learning-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .learning-icon {
+      font-size: 32px;
+    }
+
+    .learning-title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .learning-column--static .learning-title {
+      color: var(--color-danger);
+    }
+
+    .learning-column--smart .learning-title {
+      color: var(--color-success);
+    }
+
+    .learning-subtitle {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .learning-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .learning-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--color-surface-elevated);
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+
+    .learning-step-icon {
+      font-size: 18px;
+    }
+
+    .learning-arrow {
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 20px;
+    }
+
+    .learning-result {
+      text-align: center;
+      padding: 20px;
+      background: var(--color-surface-elevated);
+      border-radius: 12px;
+      margin-top: 8px;
+    }
+
+    .learning-result-value {
+      font-family: var(--font-mono);
+      font-size: 36px;
+      font-weight: 700;
+    }
+
+    .learning-column--static .learning-result-value {
+      color: var(--color-danger);
+    }
+
+    .learning-column--smart .learning-result-value {
+      color: var(--color-success);
+    }
+
+    .learning-result-label {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+    }
+
+    /* Accuracy Chart */
+    .accuracy-chart {
+      margin-top: 64px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .chart-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .chart-bars {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      height: 200px;
+      padding: 0 20px;
+      gap: 16px;
+    }
+
+    .chart-bar-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chart-bar {
+      width: 100%;
+      max-width: 60px;
+      background: linear-gradient(180deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+      border-radius: 8px 8px 0 0;
+      position: relative;
+      transition: all 0.5s var(--ease-out-expo);
+    }
+
+    .chart-bar:hover {
+      box-shadow: var(--shadow-glow-gold);
+    }
+
+    .chart-bar-value {
+      position: absolute;
+      top: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-gold);
+    }
+
+    .chart-bar-label {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    /* Learning Benefits */
+    .learning-benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    @media (max-width: 768px) {
+      .learning-benefits {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .learning-benefit-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+      transition: all 0.3s var(--ease-out-expo);
+    }
+
+    .learning-benefit-card:hover {
+      border-color: var(--color-gold);
+      transform: translateY(-4px);
+    }
+
+    .learning-benefit-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(212, 168, 83, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 24px;
+    }
+
+    .learning-benefit-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--color-text);
+    }
+
+    .learning-benefit-text {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    /* ============================================
+       ROI CALCULATOR SECTION
+       ============================================ */
+
+    .roi-section {
+      padding: 120px 0;
+      background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-base) 100%);
+    }
+
+    .roi-calculator {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 48px;
+    }
+
+    @media (max-width: 900px) {
+      .roi-calculator {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .roi-inputs {
+      background: var(--color-surface-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      padding: 36px;
+    }
+
+    .roi-inputs-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--color-text);
+    }
+
+    .roi-input-group {
+      margin-bottom: 24px;
+    }
+
+    .roi-input-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .roi-input-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+
+    .roi-input-label span:first-child {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+
+    .roi-input-value {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-gold);
+    }
+
+    .roi-slider {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: var(--color-border);
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .roi-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--color-gold);
+      cursor: pointer;
+      border: 3px solid var(--color-surface);
+      box-shadow: var(--shadow-glow-gold);
+      transition: transform 0.2s;
+    }
+
+    .roi-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    .roi-slider::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--color-gold);
+      cursor: pointer;
+      border: 3px solid var(--color-surface);
+      box-shadow: var(--shadow-glow-gold);
+    }
+
+    .roi-results {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .roi-result-card {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+      transition: all 0.3s var(--ease-out-expo);
+    }
+
+    .roi-result-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .roi-result-card--primary {
+      border-color: var(--color-gold);
+      box-shadow: var(--shadow-glow-gold);
+    }
+
+    .roi-result-card--primary .roi-result-value {
+      color: var(--color-gold);
+    }
+
+    .roi-result-card--success {
+      border-color: var(--color-success);
+    }
+
+    .roi-result-card--success .roi-result-value {
+      color: var(--color-success);
+    }
+
+    .roi-result-label {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .roi-result-value {
+      font-family: var(--font-mono);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .roi-result-sublabel {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+    }
+
+    .roi-payback {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 20px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--color-success);
+      border-radius: 12px;
+      margin-top: 8px;
+    }
+
+    .roi-payback-icon {
+      font-size: 24px;
+    }
+
+    .roi-payback-text {
+      font-size: 14px;
+      color: var(--color-success);
+    }
+
+    .roi-payback-value {
+      font-family: var(--font-mono);
+      font-weight: 700;
+    }
+
+    /* ============================================
+       DUAL CTA SECTION
+       ============================================ */
+
+    .dual-cta-section {
+      padding: 120px 0;
+      background: linear-gradient(180deg, transparent 0%, var(--color-surface) 50%, transparent 100%);
+      position: relative;
+    }
+
+    .dual-cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    @media (max-width: 768px) {
+      .dual-cta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .cta-option-card {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: 24px;
+      padding: 48px 40px;
+      text-align: center;
+      position: relative;
+      transition: all 0.4s var(--ease-out-expo);
+    }
+
+    .cta-option-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .cta-option-card--primary {
+      border-color: var(--color-gold);
+      box-shadow: var(--shadow-glow-gold);
+    }
+
+    .cta-option-card--primary::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(212, 168, 83, 0.2), transparent);
+      z-index: -1;
+    }
+
+    .cta-option-card--secondary {
+      border-color: var(--color-cyan);
+    }
+
+    .cta-option-card--secondary:hover {
+      box-shadow: var(--shadow-glow-cyan);
+    }
+
+    .cta-option-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(212, 168, 83, 0.15);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .cta-option-card--secondary .cta-option-badge {
+      background: rgba(6, 182, 212, 0.15);
+      color: var(--color-cyan);
+    }
+
+    .cta-option-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(212, 168, 83, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 36px;
+    }
+
+    .cta-option-card--secondary .cta-option-icon {
+      background: rgba(6, 182, 212, 0.1);
+    }
+
+    .cta-option-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .cta-option-card--primary .cta-option-title {
+      color: var(--color-gold);
+    }
+
+    .cta-option-card--secondary .cta-option-title {
+      color: var(--color-cyan);
+    }
+
+    .cta-option-desc {
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .cta-option-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    .cta-option-features li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .cta-option-features li:last-child {
+      border-bottom: none;
+    }
+
+    .cta-option-features .feature-icon {
+      color: var(--color-success);
+      font-size: 16px;
+    }
+
+    .cta-option-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 18px 32px;
+      border-radius: 12px;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-out-expo);
+    }
+
+    .cta-option-card--primary .cta-option-btn {
+      background: var(--color-gold);
+      color: var(--color-void);
+      border: none;
+    }
+
+    .cta-option-card--primary .cta-option-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-glow-gold);
+    }
+
+    .cta-option-card--secondary .cta-option-btn {
+      background: transparent;
+      color: var(--color-cyan);
+      border: 2px solid var(--color-cyan);
+    }
+
+    .cta-option-card--secondary .cta-option-btn:hover {
+      background: var(--color-cyan);
+      color: var(--color-void);
+    }
+
+    .cta-contact-info {
+      text-align: center;
+      margin-top: 48px;
+      padding: 32px;
+      background: var(--color-surface-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+    }
+
+    .cta-contact-label {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+    }
+
+    .cta-contact-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 8px;
+    }
+
+    .cta-contact-details {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .cta-contact-details a {
+      color: var(--color-gold);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .cta-contact-details a:hover {
+      color: var(--color-gold-light);
+    }
+
+    /* ============================================
+       ROADMAP PHASE 1.5 ADDITIONS
+       ============================================ */
+
+    .roadmap-grid-extended {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+    }
+
+    @media (max-width: 1200px) {
+      .roadmap-grid-extended {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .roadmap-grid-extended {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .roadmap-card--learning {
+      border-color: var(--color-success);
+      position: relative;
+    }
+
+    .roadmap-card--learning::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), transparent);
+      z-index: -1;
+    }
+
+    .roadmap-card--learning .roadmap-badge {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--color-success);
+    }
+
+    .roadmap-bundle {
+      text-align: center;
+      margin-top: 32px;
+      padding: 24px;
+      background: linear-gradient(135deg, rgba(212, 168, 83, 0.1) 0%, rgba(212, 168, 83, 0.05) 100%);
+      border: 1px solid rgba(212, 168, 83, 0.3);
+      border-radius: 12px;
+    }
+
+    .roadmap-bundle-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .roadmap-bundle-text {
+      font-size: 15px;
+      color: var(--color-text-secondary);
+    }
+
+    .roadmap-bundle-price {
+      font-family: var(--font-mono);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-gold);
+      margin-top: 4px;
+    }
   </style>
 </head>
 <body>
@@ -1885,66 +2792,470 @@
     </div>
   </section>
 
+  <!-- Competitor Comparison Section -->
+  <section class="comparison-section" id="comparison-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge" id="comparison-badge">Comparatif Honnete</span>
+        <h2 class="section-title" id="comparison-title">D2Q vs. Alternatives</h2>
+        <p class="section-subtitle" id="comparison-subtitle">
+          Une comparaison transparente pour vous aider a choisir
+        </p>
+      </div>
+
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th id="comp-feature">Fonctionnalite</th>
+              <th>Werk24</th>
+              <th>SOLIDWORKS</th>
+              <th id="comp-generic-llm">LLM Generique</th>
+              <th class="highlight-col">D2Q</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="comp-row-accuracy">Precision initiale</td>
+              <td>~95%</td>
+              <td>~90%</td>
+              <td>~70%</td>
+              <td class="highlight-col">~80%</td>
+            </tr>
+            <tr>
+              <td id="comp-row-accuracy-12m">Apres 12 mois</td>
+              <td>~95%</td>
+              <td>~90%</td>
+              <td>~70%</td>
+              <td class="highlight-col">~92%</td>
+            </tr>
+            <tr>
+              <td id="comp-row-learns">Apprend de VOS corrections</td>
+              <td><span class="compare-cross">X</span></td>
+              <td><span class="compare-cross">X</span></td>
+              <td><span class="compare-cross">X</span></td>
+              <td class="highlight-col"><span class="compare-check">OK</span></td>
+            </tr>
+            <tr>
+              <td id="comp-row-template">Votre template exact</td>
+              <td><span class="compare-cross">X</span></td>
+              <td><span class="compare-partial">Partiel</span></td>
+              <td><span class="compare-cross">X</span></td>
+              <td class="highlight-col"><span class="compare-check">OK</span></td>
+            </tr>
+            <tr>
+              <td id="comp-row-swiss">Donnees en Suisse</td>
+              <td><span class="compare-cross">X</span></td>
+              <td><span class="compare-partial">Option</span></td>
+              <td><span class="compare-cross">X</span></td>
+              <td class="highlight-col"><span class="compare-check">OK</span></td>
+            </tr>
+            <tr>
+              <td id="comp-row-similarity">Recherche de similitudes</td>
+              <td><span class="compare-cross">X</span></td>
+              <td><span class="compare-cross">X</span></td>
+              <td><span class="compare-cross">X</span></td>
+              <td class="highlight-col"><span class="compare-check">Phase 2</span></td>
+            </tr>
+            <tr>
+              <td id="comp-row-quote">Adaptation devis</td>
+              <td><span class="compare-cross">X</span></td>
+              <td><span class="compare-cross">X</span></td>
+              <td><span class="compare-cross">X</span></td>
+              <td class="highlight-col"><span class="compare-check">Phase 3</span></td>
+            </tr>
+            <tr>
+              <td id="comp-row-ml">ML personnalise</td>
+              <td><span class="compare-cross">X</span></td>
+              <td><span class="compare-cross">X</span></td>
+              <td><span class="compare-cross">X</span></td>
+              <td class="highlight-col"><span class="compare-check">OK</span></td>
+            </tr>
+            <tr>
+              <td id="comp-row-pricing">Modele de prix</td>
+              <td id="comp-pricing-werk">Licence/an</td>
+              <td id="comp-pricing-sw">Licence/an</td>
+              <td id="comp-pricing-llm">Token/usage</td>
+              <td class="highlight-col" id="comp-pricing-d2q">Projet fixe</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Honesty Cards -->
+      <div class="honesty-cards">
+        <div class="honesty-card honesty-card--competitor">
+          <h3 class="honesty-card-title" id="honesty-competitor-title">Quand Werk24 est meilleur</h3>
+          <ul class="honesty-list">
+            <li id="honesty-c1">Volume tres eleve (>1000 plans/mois)</li>
+            <li id="honesty-c2">Plans deja standardises GD&T</li>
+            <li id="honesty-c3">Pas besoin de personnalisation</li>
+            <li id="honesty-c4">Budget pour licence annuelle elevee</li>
+          </ul>
+        </div>
+        <div class="honesty-card honesty-card--d2q">
+          <h3 class="honesty-card-title" id="honesty-d2q-title">Quand D2Q est meilleur</h3>
+          <ul class="honesty-list">
+            <li id="honesty-d1">Plans horlogers/micro-mecaniques specifiques</li>
+            <li id="honesty-d2">Besoin d'apprentissage continu</li>
+            <li id="honesty-d3">Templates de sortie personnalises</li>
+            <li id="honesty-d4">Recherche de similitudes dans historique</li>
+            <li id="honesty-d5">Souverainete des donnees en Suisse</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Roadmap Section -->
   <section class="roadmap-section">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title" id="roadmap-title">Feuille de Route</h2>
         <p class="section-subtitle" id="roadmap-subtitle">
-          Notre vision en trois phases
+          Notre vision en quatre phases
         </p>
       </div>
 
-      <div class="roadmap-grid">
+      <div class="roadmap-grid-extended">
         <div class="roadmap-card roadmap-card--current">
           <span class="roadmap-badge" id="rm1-badge">Phase 1 — Maintenant</span>
-          <h3 class="roadmap-title" id="rm1-title">Extraction Fiche de Contrôle</h3>
-          <div class="roadmap-timeline" id="rm1-timeline">4-6 semaines de développement</div>
+          <h3 class="roadmap-title" id="rm1-title">Extraction Fiche de Controle</h3>
+          <div class="roadmap-timeline" id="rm1-timeline">4-6 semaines de developpement</div>
           <ul class="roadmap-features">
-            <li><span class="feature-check feature-check--done">✓</span> <span id="rm1-f1">Pipeline d'extraction IA</span></li>
-            <li><span class="feature-check feature-check--done">✓</span> <span id="rm1-f2">Génération Fiche de Contrôle</span></li>
-            <li><span class="feature-check feature-check--done">✓</span> <span id="rm1-f3">Interface de validation</span></li>
-            <li><span class="feature-check feature-check--done">✓</span> <span id="rm1-f4">Export Excel</span></li>
+            <li><span class="feature-check feature-check--done">OK</span> <span id="rm1-f1">Pipeline d'extraction IA</span></li>
+            <li><span class="feature-check feature-check--done">OK</span> <span id="rm1-f2">Generation Fiche de Controle</span></li>
+            <li><span class="feature-check feature-check--done">OK</span> <span id="rm1-f3">Interface de validation</span></li>
+            <li><span class="feature-check feature-check--done">OK</span> <span id="rm1-f4">Export Excel</span></li>
           </ul>
-          <div class="roadmap-price">€15-25K</div>
+          <div class="roadmap-price">EUR 18K</div>
+        </div>
+
+        <div class="roadmap-card roadmap-card--learning">
+          <span class="roadmap-badge" id="rm15-badge">Phase 1.5 — Recommande</span>
+          <h3 class="roadmap-title" id="rm15-title">Infrastructure d'Apprentissage</h3>
+          <div class="roadmap-timeline" id="rm15-timeline">+4 semaines</div>
+          <ul class="roadmap-features">
+            <li><span class="feature-check feature-check--pending">O</span> <span id="rm15-f1">Capture des corrections</span></li>
+            <li><span class="feature-check feature-check--pending">O</span> <span id="rm15-f2">Dashboard de precision</span></li>
+            <li><span class="feature-check feature-check--pending">O</span> <span id="rm15-f3">Optimisation des prompts</span></li>
+            <li><span class="feature-check feature-check--pending">O</span> <span id="rm15-f4">Preparation donnees ML</span></li>
+          </ul>
+          <div class="roadmap-price">EUR 9K</div>
         </div>
 
         <div class="roadmap-card roadmap-card--unique">
           <span class="roadmap-badge" id="rm2-badge">Phase 2</span>
-          <span class="unique-badge" id="unique-badge-2">🏆 Exclusif D2Q</span>
+          <span class="unique-badge" id="unique-badge-2">Exclusif D2Q</span>
           <h3 class="roadmap-title" id="rm2-title">Recherche de Similitudes</h3>
           <div class="roadmap-timeline" id="rm2-timeline">+4-6 semaines</div>
           <ul class="roadmap-features">
-            <li><span class="feature-check feature-check--pending">○</span> <span id="rm2-f1">Base de plans historiques</span></li>
-            <li><span class="feature-check feature-check--pending">○</span> <span id="rm2-f2">Moteur de recherche IA</span></li>
-            <li><span class="feature-check feature-check--pending">○</span> <span id="rm2-f3">Score de correspondance</span></li>
-            <li><span class="feature-check feature-check--pending">○</span> <span id="rm2-f4">Visualisation des différences</span></li>
+            <li><span class="feature-check feature-check--pending">O</span> <span id="rm2-f1">Base de plans historiques</span></li>
+            <li><span class="feature-check feature-check--pending">O</span> <span id="rm2-f2">Moteur de recherche IA</span></li>
+            <li><span class="feature-check feature-check--pending">O</span> <span id="rm2-f3">Score de correspondance</span></li>
+            <li><span class="feature-check feature-check--pending">O</span> <span id="rm2-f4">Visualisation des differences</span></li>
           </ul>
-          <div class="roadmap-price">€20-30K</div>
+          <div class="roadmap-price">EUR 20-30K</div>
         </div>
 
         <div class="roadmap-card roadmap-card--unique">
           <span class="roadmap-badge" id="rm3-badge">Phase 3</span>
-          <span class="unique-badge" id="unique-badge-3">🏆 Exclusif D2Q</span>
+          <span class="unique-badge" id="unique-badge-3">Exclusif D2Q</span>
           <h3 class="roadmap-title" id="rm3-title">Adaptation des Devis</h3>
           <div class="roadmap-timeline" id="rm3-timeline">+4-6 semaines</div>
           <ul class="roadmap-features">
-            <li><span class="feature-check feature-check--pending">○</span> <span id="rm3-f1">Intégration base devis</span></li>
-            <li><span class="feature-check feature-check--pending">○</span> <span id="rm3-f2">Moteur d'adaptation</span></li>
-            <li><span class="feature-check feature-check--pending">○</span> <span id="rm3-f3">Calculs d'ajustement</span></li>
-            <li><span class="feature-check feature-check--pending">○</span> <span id="rm3-f4">Audit trail complet</span></li>
+            <li><span class="feature-check feature-check--pending">O</span> <span id="rm3-f1">Integration base devis</span></li>
+            <li><span class="feature-check feature-check--pending">O</span> <span id="rm3-f2">Moteur d'adaptation</span></li>
+            <li><span class="feature-check feature-check--pending">O</span> <span id="rm3-f3">Calculs d'ajustement</span></li>
+            <li><span class="feature-check feature-check--pending">O</span> <span id="rm3-f4">Audit trail complet</span></li>
           </ul>
-          <div class="roadmap-price">€25-35K</div>
+          <div class="roadmap-price">EUR 25-35K</div>
         </div>
       </div>
 
+      <!-- Bundle Recommendation -->
+      <div class="roadmap-bundle">
+        <div class="roadmap-bundle-icon">RECOMMANDE</div>
+        <div class="roadmap-bundle-text" id="bundle-text">Phase 1 + Phase 1.5 = Systeme qui s'ameliore avec vous</div>
+        <div class="roadmap-bundle-price" id="bundle-price">EUR 27K (au lieu de EUR 30K)</div>
+      </div>
+
       <div class="roadmap-cta">
-        <button class="cta-button" onclick="scrollToDemo()">
-          <span id="roadmap-cta">Commençons la Phase 1</span>
+        <button class="cta-button" onclick="scrollToCTA()">
+          <span id="roadmap-cta">Commencons la Phase 1</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Calculator Section -->
+  <section class="roi-section" id="roi-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge" id="roi-badge">Calculateur ROI</span>
+        <h2 class="section-title" id="roi-title">Calculez Votre Retour sur Investissement</h2>
+        <p class="section-subtitle" id="roi-subtitle">
+          Estimez vos economies basees sur votre volume
+        </p>
+      </div>
+
+      <div class="roi-calculator">
+        <div class="roi-inputs">
+          <h3 class="roi-inputs-title" id="roi-inputs-title">Vos parametres</h3>
+
+          <div class="roi-input-group">
+            <div class="roi-input-label">
+              <span id="roi-label-drawings">Plans par mois</span>
+              <span class="roi-input-value" id="roi-value-drawings">100</span>
+            </div>
+            <input type="range" class="roi-slider" id="roi-slider-drawings" min="20" max="500" value="100" oninput="updateROI()">
+          </div>
+
+          <div class="roi-input-group">
+            <div class="roi-input-label">
+              <span id="roi-label-time">Minutes par plan (manuel)</span>
+              <span class="roi-input-value" id="roi-value-time">30 min</span>
+            </div>
+            <input type="range" class="roi-slider" id="roi-slider-time" min="15" max="60" value="30" oninput="updateROI()">
+          </div>
+
+          <div class="roi-input-group">
+            <div class="roi-input-label">
+              <span id="roi-label-rate">Cout horaire ingenieur</span>
+              <span class="roi-input-value" id="roi-value-rate">EUR 80</span>
+            </div>
+            <input type="range" class="roi-slider" id="roi-slider-rate" min="50" max="150" value="80" oninput="updateROI()">
+          </div>
+        </div>
+
+        <div class="roi-results">
+          <div class="roi-result-card">
+            <div class="roi-result-label" id="roi-result-label-time">Temps economise / mois</div>
+            <div class="roi-result-value" id="roi-result-time">49h</div>
+          </div>
+
+          <div class="roi-result-card roi-result-card--primary">
+            <div class="roi-result-label" id="roi-result-label-monthly">Economies mensuelles</div>
+            <div class="roi-result-value" id="roi-result-monthly">EUR 3,920</div>
+          </div>
+
+          <div class="roi-result-card roi-result-card--success">
+            <div class="roi-result-label" id="roi-result-label-annual">Economies annuelles</div>
+            <div class="roi-result-value" id="roi-result-annual">EUR 47,040</div>
+          </div>
+
+          <div class="roi-payback">
+            <span class="roi-payback-icon">ROI</span>
+            <span class="roi-payback-text" id="roi-payback-text">Rentabilise en <span class="roi-payback-value" id="roi-payback-months">~7 mois</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Learning System Section -->
+  <section class="learning-section" id="learning-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge" id="learning-badge">Systeme Intelligent</span>
+        <h2 class="section-title" id="learning-title">Un Systeme Qui S'ameliore Avec Vous</h2>
+        <p class="section-subtitle" id="learning-subtitle">
+          La difference cle entre D2Q et les solutions statiques
+        </p>
+      </div>
+
+      <div class="learning-comparison">
+        <!-- Static Solutions Column -->
+        <div class="learning-column learning-column--static">
+          <div class="learning-header">
+            <span class="learning-icon">X</span>
+            <h3 class="learning-title" id="learning-static-title">Solutions Statiques</h3>
+          </div>
+          <p class="learning-subtitle" id="learning-static-subtitle">Werk24, LLM generique</p>
+
+          <div class="learning-flow">
+            <div class="learning-step">
+              <span class="learning-step-icon">1</span>
+              <span id="learning-static-s1">Erreur detectee</span>
+            </div>
+            <div class="learning-arrow">v</div>
+            <div class="learning-step">
+              <span class="learning-step-icon">2</span>
+              <span id="learning-static-s2">Correction manuelle</span>
+            </div>
+            <div class="learning-arrow">v</div>
+            <div class="learning-step">
+              <span class="learning-step-icon">3</span>
+              <span id="learning-static-s3">Correction perdue</span>
+            </div>
+            <div class="learning-arrow">v</div>
+            <div class="learning-result">
+              <div class="learning-result-value">80%</div>
+              <div class="learning-result-label" id="learning-static-result">Pour toujours</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- D2Q Learning Column -->
+        <div class="learning-column learning-column--smart">
+          <div class="learning-header">
+            <span class="learning-icon">OK</span>
+            <h3 class="learning-title" id="learning-smart-title">Notre Approche (D2Q)</h3>
+          </div>
+          <p class="learning-subtitle" id="learning-smart-subtitle">Apprentissage continu</p>
+
+          <div class="learning-flow">
+            <div class="learning-step">
+              <span class="learning-step-icon">1</span>
+              <span id="learning-smart-s1">Erreur detectee</span>
+            </div>
+            <div class="learning-arrow">v</div>
+            <div class="learning-step">
+              <span class="learning-step-icon">2</span>
+              <span id="learning-smart-s2">Correction capturee</span>
+            </div>
+            <div class="learning-arrow">v</div>
+            <div class="learning-step">
+              <span class="learning-step-icon">3</span>
+              <span id="learning-smart-s3">Systeme s'ameliore</span>
+            </div>
+            <div class="learning-arrow">v</div>
+            <div class="learning-result">
+              <div class="learning-result-value">80% - 95%</div>
+              <div class="learning-result-label" id="learning-smart-result">Evolution continue</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accuracy Projection Chart -->
+      <div class="accuracy-chart">
+        <h3 class="chart-title" id="chart-title">Projection de Precision D2Q</h3>
+        <div class="chart-bars">
+          <div class="chart-bar-group">
+            <div class="chart-bar" style="height: 80px;">
+              <span class="chart-bar-value">80%</span>
+            </div>
+            <span class="chart-bar-label" id="chart-m1">Mois 1</span>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-bar" style="height: 98px;">
+              <span class="chart-bar-value">83%</span>
+            </div>
+            <span class="chart-bar-label" id="chart-m3">Mois 3</span>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-bar" style="height: 122px;">
+              <span class="chart-bar-value">87%</span>
+            </div>
+            <span class="chart-bar-label" id="chart-m6">Mois 6</span>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-bar" style="height: 152px;">
+              <span class="chart-bar-value">92%</span>
+            </div>
+            <span class="chart-bar-label" id="chart-m12">Mois 12</span>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-bar" style="height: 170px;">
+              <span class="chart-bar-value">95%</span>
+            </div>
+            <span class="chart-bar-label" id="chart-m18">Mois 18</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Learning Benefits -->
+      <div class="learning-benefits">
+        <div class="learning-benefit-card">
+          <div class="learning-benefit-icon">CYCLE</div>
+          <h4 class="learning-benefit-title" id="benefit1-title">Boucle de Feedback</h4>
+          <p class="learning-benefit-text" id="benefit1-text">Chaque correction ameliore le systeme. Plus vous l'utilisez, plus il devient precis.</p>
+        </div>
+        <div class="learning-benefit-card">
+          <div class="learning-benefit-icon">STATS</div>
+          <h4 class="learning-benefit-title" id="benefit2-title">Dashboard de Precision</h4>
+          <p class="learning-benefit-text" id="benefit2-text">Visualisez l'evolution de la precision en temps reel. Metriques par type de plan.</p>
+        </div>
+        <div class="learning-benefit-card">
+          <div class="learning-benefit-icon">ML</div>
+          <h4 class="learning-benefit-title" id="benefit3-title">Specialise pour VOUS</h4>
+          <p class="learning-benefit-text" id="benefit3-text">Le modele s'adapte a vos plans specifiques, vos conventions, votre vocabulaire.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dual CTA Section -->
+  <section class="dual-cta-section" id="cta-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="cta-title">Pret a Commencer?</h2>
+        <p class="section-subtitle" id="cta-subtitle">
+          Choisissez l'option qui vous convient
+        </p>
+      </div>
+
+      <div class="dual-cta-grid">
+        <!-- Option A: Free POC -->
+        <div class="cta-option-card cta-option-card--primary">
+          <span class="cta-option-badge" id="cta-a-badge">Recommande</span>
+          <div class="cta-option-icon">TEST</div>
+          <h3 class="cta-option-title" id="cta-a-title">POC Gratuit</h3>
+          <p class="cta-option-desc" id="cta-a-desc">
+            Testez D2Q avec vos propres plans. Aucun engagement, aucun cout.
+          </p>
+          <ul class="cta-option-features">
+            <li><span class="feature-icon">OK</span> <span id="cta-a-f1">Envoyez 3-5 de vos plans</span></li>
+            <li><span class="feature-icon">OK</span> <span id="cta-a-f2">Resultats en 48 heures</span></li>
+            <li><span class="feature-icon">OK</span> <span id="cta-a-f3">Rapport de precision detaille</span></li>
+            <li><span class="feature-icon">OK</span> <span id="cta-a-f4">Sans cout ni engagement</span></li>
+          </ul>
+          <a href="mailto:contact@chaine.ch?subject=POC%20D2Q%20Gratuit" class="cta-option-btn" id="cta-a-btn">
+            Demander le POC Gratuit
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Option B: Discovery Call -->
+        <div class="cta-option-card cta-option-card--secondary">
+          <span class="cta-option-badge" id="cta-b-badge">Alternative</span>
+          <div class="cta-option-icon">APPEL</div>
+          <h3 class="cta-option-title" id="cta-b-title">Appel Decouverte</h3>
+          <p class="cta-option-desc" id="cta-b-desc">
+            Discussion technique de 30 minutes pour evaluer vos besoins specifiques.
+          </p>
+          <ul class="cta-option-features">
+            <li><span class="feature-icon">OK</span> <span id="cta-b-f1">30 minutes avec un expert</span></li>
+            <li><span class="feature-icon">OK</span> <span id="cta-b-f2">Demo personnalisee</span></li>
+            <li><span class="feature-icon">OK</span> <span id="cta-b-f3">Evaluation de vos besoins</span></li>
+            <li><span class="feature-icon">OK</span> <span id="cta-b-f4">Proposition sur mesure</span></li>
+          </ul>
+          <a href="mailto:contact@chaine.ch?subject=Appel%20Decouverte%20D2Q" class="cta-option-btn" id="cta-b-btn">
+            Planifier un Appel
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="cta-contact-info">
+        <p class="cta-contact-label" id="cta-contact-label">Partenaire technique</p>
+        <p class="cta-contact-name">Chaine - Solutions Industrielles</p>
+        <div class="cta-contact-details">
+          <a href="mailto:contact@chaine.ch">contact@chaine.ch</a>
+          <a href="tel:+41XXXXXXXXX">+41 XX XXX XX XX</a>
+        </div>
       </div>
     </div>
   </section>
@@ -1954,10 +3265,10 @@
     <div class="container">
       <div class="footer-logo">D2Q</div>
       <p class="footer-disclaimer" id="footer-disclaimer">
-        Version Démo: Résultats pré-calculés pour démonstration.
-        Le système de production traitera vos plans en temps réel.
+        Version Demo: Resultats pre-calcules pour demonstration.
+        Le systeme de production traitera vos plans en temps reel.
       </p>
-      <p class="footer-copyright">© 2026 D2Q — Drawing to Quality Control</p>
+      <p class="footer-copyright">2026 D2Q - Drawing to Quality Control</p>
     </div>
   </footer>
 
@@ -2160,10 +3471,106 @@
         rm3Title: "Adaptation des Devis",
         rm3Timeline: "+4-6 semaines",
         roadmapCta: "Commençons la Phase 1",
-        footerDisclaimer: "Version Démo: Résultats pré-calculés pour démonstration. Le système de production traitera vos plans en temps réel.",
-        metaNumber: "Numéro",
-        metaMaterial: "Matériau",
-        metaPart: "N° Pièce",
+        roadmapSubtitleNew: "Notre vision en quatre phases",
+        rm15Badge: "Phase 1.5 - Recommande",
+        rm15Title: "Infrastructure d'Apprentissage",
+        rm15Timeline: "+4 semaines",
+        bundleText: "Phase 1 + Phase 1.5 = Systeme qui s'ameliore avec vous",
+        bundlePrice: "EUR 27K (au lieu de EUR 30K)",
+        // Comparison section
+        compBadge: "Comparatif Honnete",
+        compTitle: "D2Q vs. Alternatives",
+        compSubtitle: "Une comparaison transparente pour vous aider a choisir",
+        compFeature: "Fonctionnalite",
+        compGenericLLM: "LLM Generique",
+        compRowAccuracy: "Precision initiale",
+        compRowAccuracy12m: "Apres 12 mois",
+        compRowLearns: "Apprend de VOS corrections",
+        compRowTemplate: "Votre template exact",
+        compRowSwiss: "Donnees en Suisse",
+        compRowSimilarity: "Recherche de similitudes",
+        compRowQuote: "Adaptation devis",
+        compRowML: "ML personnalise",
+        compRowPricing: "Modele de prix",
+        compPricingWerk: "Licence/an",
+        compPricingSW: "Licence/an",
+        compPricingLLM: "Token/usage",
+        compPricingD2Q: "Projet fixe",
+        honestyCompetitorTitle: "Quand Werk24 est meilleur",
+        honestyC1: "Volume tres eleve (>1000 plans/mois)",
+        honestyC2: "Plans deja standardises GD&T",
+        honestyC3: "Pas besoin de personnalisation",
+        honestyC4: "Budget pour licence annuelle elevee",
+        honestyD2QTitle: "Quand D2Q est meilleur",
+        honestyD1: "Plans horlogers/micro-mecaniques specifiques",
+        honestyD2: "Besoin d'apprentissage continu",
+        honestyD3: "Templates de sortie personnalises",
+        honestyD4: "Recherche de similitudes dans historique",
+        honestyD5: "Souverainete des donnees en Suisse",
+        // ROI Calculator
+        roiBadge: "Calculateur ROI",
+        roiTitleNew: "Calculez Votre Retour sur Investissement",
+        roiSubtitle: "Estimez vos economies basees sur votre volume",
+        roiInputsTitle: "Vos parametres",
+        roiLabelDrawings: "Plans par mois",
+        roiLabelTime: "Minutes par plan (manuel)",
+        roiLabelRate: "Cout horaire ingenieur",
+        roiResultLabelTime: "Temps economise / mois",
+        roiResultLabelMonthly: "Economies mensuelles",
+        roiResultLabelAnnual: "Economies annuelles",
+        roiPaybackText: "Rentabilise en",
+        // Learning section
+        learningBadge: "Systeme Intelligent",
+        learningTitle: "Un Systeme Qui S'ameliore Avec Vous",
+        learningSubtitle: "La difference cle entre D2Q et les solutions statiques",
+        learningStaticTitle: "Solutions Statiques",
+        learningStaticSubtitle: "Werk24, LLM generique",
+        learningStaticS1: "Erreur detectee",
+        learningStaticS2: "Correction manuelle",
+        learningStaticS3: "Correction perdue",
+        learningStaticResult: "Pour toujours",
+        learningSmartTitle: "Notre Approche (D2Q)",
+        learningSmartSubtitle: "Apprentissage continu",
+        learningSmartS1: "Erreur detectee",
+        learningSmartS2: "Correction capturee",
+        learningSmartS3: "Systeme s'ameliore",
+        learningSmartResult: "Evolution continue",
+        chartTitle: "Projection de Precision D2Q",
+        chartM1: "Mois 1",
+        chartM3: "Mois 3",
+        chartM6: "Mois 6",
+        chartM12: "Mois 12",
+        chartM18: "Mois 18",
+        benefit1Title: "Boucle de Feedback",
+        benefit1Text: "Chaque correction ameliore le systeme. Plus vous l'utilisez, plus il devient precis.",
+        benefit2Title: "Dashboard de Precision",
+        benefit2Text: "Visualisez l'evolution de la precision en temps reel. Metriques par type de plan.",
+        benefit3Title: "Specialise pour VOUS",
+        benefit3Text: "Le modele s'adapte a vos plans specifiques, vos conventions, votre vocabulaire.",
+        // Dual CTA
+        ctaTitle: "Pret a Commencer?",
+        ctaSubtitle: "Choisissez l'option qui vous convient",
+        ctaABadge: "Recommande",
+        ctaATitle: "POC Gratuit",
+        ctaADesc: "Testez D2Q avec vos propres plans. Aucun engagement, aucun cout.",
+        ctaAF1: "Envoyez 3-5 de vos plans",
+        ctaAF2: "Resultats en 48 heures",
+        ctaAF3: "Rapport de precision detaille",
+        ctaAF4: "Sans cout ni engagement",
+        ctaABtn: "Demander le POC Gratuit",
+        ctaBBadge: "Alternative",
+        ctaBTitle: "Appel Decouverte",
+        ctaBDesc: "Discussion technique de 30 minutes pour evaluer vos besoins specifiques.",
+        ctaBF1: "30 minutes avec un expert",
+        ctaBF2: "Demo personnalisee",
+        ctaBF3: "Evaluation de vos besoins",
+        ctaBF4: "Proposition sur mesure",
+        ctaBBtn: "Planifier un Appel",
+        ctaContactLabel: "Partenaire technique",
+        footerDisclaimer: "Version Demo: Resultats pre-calcules pour demonstration. Le systeme de production traitera vos plans en temps reel.",
+        metaNumber: "Numero",
+        metaMaterial: "Materiau",
+        metaPart: "N Piece",
         metaClient: "Client"
       },
       en: {
@@ -2244,6 +3651,102 @@
         rm3Title: "Quote Adaptation",
         rm3Timeline: "+4-6 weeks",
         roadmapCta: "Let's Start Phase 1",
+        roadmapSubtitleNew: "Our four-phase vision",
+        rm15Badge: "Phase 1.5 - Recommended",
+        rm15Title: "Learning Infrastructure",
+        rm15Timeline: "+4 weeks",
+        bundleText: "Phase 1 + Phase 1.5 = System that improves with you",
+        bundlePrice: "EUR 27K (instead of EUR 30K)",
+        // Comparison section
+        compBadge: "Honest Comparison",
+        compTitle: "D2Q vs. Alternatives",
+        compSubtitle: "A transparent comparison to help you choose",
+        compFeature: "Feature",
+        compGenericLLM: "Generic LLM",
+        compRowAccuracy: "Initial accuracy",
+        compRowAccuracy12m: "After 12 months",
+        compRowLearns: "Learns from YOUR corrections",
+        compRowTemplate: "Your exact template",
+        compRowSwiss: "Data in Switzerland",
+        compRowSimilarity: "Similarity search",
+        compRowQuote: "Quote adaptation",
+        compRowML: "Custom ML",
+        compRowPricing: "Pricing model",
+        compPricingWerk: "License/year",
+        compPricingSW: "License/year",
+        compPricingLLM: "Token/usage",
+        compPricingD2Q: "Fixed project",
+        honestyCompetitorTitle: "When Werk24 is better",
+        honestyC1: "Very high volume (>1000 drawings/month)",
+        honestyC2: "Already standardized GD&T drawings",
+        honestyC3: "No customization needed",
+        honestyC4: "Budget for high annual license",
+        honestyD2QTitle: "When D2Q is better",
+        honestyD1: "Specific watchmaking/micro-mechanical drawings",
+        honestyD2: "Need for continuous learning",
+        honestyD3: "Custom output templates",
+        honestyD4: "Historical similarity search",
+        honestyD5: "Data sovereignty in Switzerland",
+        // ROI Calculator
+        roiBadge: "ROI Calculator",
+        roiTitleNew: "Calculate Your Return on Investment",
+        roiSubtitle: "Estimate your savings based on your volume",
+        roiInputsTitle: "Your parameters",
+        roiLabelDrawings: "Drawings per month",
+        roiLabelTime: "Minutes per drawing (manual)",
+        roiLabelRate: "Engineer hourly cost",
+        roiResultLabelTime: "Time saved / month",
+        roiResultLabelMonthly: "Monthly savings",
+        roiResultLabelAnnual: "Annual savings",
+        roiPaybackText: "Payback in",
+        // Learning section
+        learningBadge: "Intelligent System",
+        learningTitle: "A System That Improves With You",
+        learningSubtitle: "The key difference between D2Q and static solutions",
+        learningStaticTitle: "Static Solutions",
+        learningStaticSubtitle: "Werk24, Generic LLM",
+        learningStaticS1: "Error detected",
+        learningStaticS2: "Manual correction",
+        learningStaticS3: "Correction lost",
+        learningStaticResult: "Forever",
+        learningSmartTitle: "Our Approach (D2Q)",
+        learningSmartSubtitle: "Continuous learning",
+        learningSmartS1: "Error detected",
+        learningSmartS2: "Correction captured",
+        learningSmartS3: "System improves",
+        learningSmartResult: "Continuous evolution",
+        chartTitle: "D2Q Accuracy Projection",
+        chartM1: "Month 1",
+        chartM3: "Month 3",
+        chartM6: "Month 6",
+        chartM12: "Month 12",
+        chartM18: "Month 18",
+        benefit1Title: "Feedback Loop",
+        benefit1Text: "Every correction improves the system. The more you use it, the more accurate it becomes.",
+        benefit2Title: "Accuracy Dashboard",
+        benefit2Text: "Visualize accuracy evolution in real-time. Metrics by drawing type.",
+        benefit3Title: "Specialized for YOU",
+        benefit3Text: "The model adapts to your specific drawings, your conventions, your vocabulary.",
+        // Dual CTA
+        ctaTitle: "Ready to Start?",
+        ctaSubtitle: "Choose the option that suits you",
+        ctaABadge: "Recommended",
+        ctaATitle: "Free POC",
+        ctaADesc: "Test D2Q with your own drawings. No commitment, no cost.",
+        ctaAF1: "Send 3-5 of your drawings",
+        ctaAF2: "Results in 48 hours",
+        ctaAF3: "Detailed accuracy report",
+        ctaAF4: "No cost or commitment",
+        ctaABtn: "Request Free POC",
+        ctaBBadge: "Alternative",
+        ctaBTitle: "Discovery Call",
+        ctaBDesc: "30-minute technical discussion to assess your specific needs.",
+        ctaBF1: "30 minutes with an expert",
+        ctaBF2: "Personalized demo",
+        ctaBF3: "Needs assessment",
+        ctaBF4: "Custom proposal",
+        ctaBBtn: "Schedule a Call",
+        ctaContactLabel: "Technical partner",
         footerDisclaimer: "Demo Version: Pre-computed results for demonstration. Production system will process your drawings in real-time.",
         metaNumber: "Number",
         metaMaterial: "Material",
@@ -2532,7 +4035,7 @@
         'cta-text': t.ctaText,
         // Trust banner
         'trust-industry': t.trustIndustry,
-        'trust-sovereignty': '🇨🇭 ' + t.trustSovereignty,
+        'trust-sovereignty': t.trustSovereignty,
         'trust-validation': t.trustValidation,
         // Value pillars
         'value-consistency': t.valueConsistency,
@@ -2559,14 +4062,105 @@
         'step4-title': t.step4Title, 'step4-desc': t.step4Desc,
         'step5-title': t.step5Title, 'step5-desc': t.step5Desc,
         'step6-title': t.step6Title, 'step6-desc': t.step6Desc,
+        // Comparison section
+        'comparison-badge': t.compBadge,
+        'comparison-title': t.compTitle,
+        'comparison-subtitle': t.compSubtitle,
+        'comp-feature': t.compFeature,
+        'comp-generic-llm': t.compGenericLLM,
+        'comp-row-accuracy': t.compRowAccuracy,
+        'comp-row-accuracy-12m': t.compRowAccuracy12m,
+        'comp-row-learns': t.compRowLearns,
+        'comp-row-template': t.compRowTemplate,
+        'comp-row-swiss': t.compRowSwiss,
+        'comp-row-similarity': t.compRowSimilarity,
+        'comp-row-quote': t.compRowQuote,
+        'comp-row-ml': t.compRowML,
+        'comp-row-pricing': t.compRowPricing,
+        'comp-pricing-werk': t.compPricingWerk,
+        'comp-pricing-sw': t.compPricingSW,
+        'comp-pricing-llm': t.compPricingLLM,
+        'comp-pricing-d2q': t.compPricingD2Q,
+        'honesty-competitor-title': t.honestyCompetitorTitle,
+        'honesty-c1': t.honestyC1,
+        'honesty-c2': t.honestyC2,
+        'honesty-c3': t.honestyC3,
+        'honesty-c4': t.honestyC4,
+        'honesty-d2q-title': t.honestyD2QTitle,
+        'honesty-d1': t.honestyD1,
+        'honesty-d2': t.honestyD2,
+        'honesty-d3': t.honestyD3,
+        'honesty-d4': t.honestyD4,
+        'honesty-d5': t.honestyD5,
+        // Roadmap
         'roadmap-title': t.roadmapTitle,
-        'roadmap-subtitle': t.roadmapSubtitle,
+        'roadmap-subtitle': t.roadmapSubtitleNew || t.roadmapSubtitle,
         'rm1-badge': t.rm1Badge, 'rm1-title': t.rm1Title, 'rm1-timeline': t.rm1Timeline,
+        'rm15-badge': t.rm15Badge, 'rm15-title': t.rm15Title, 'rm15-timeline': t.rm15Timeline,
         'rm2-badge': t.rm2Badge, 'rm2-title': t.rm2Title, 'rm2-timeline': t.rm2Timeline,
         'rm3-badge': t.rm3Badge, 'rm3-title': t.rm3Title, 'rm3-timeline': t.rm3Timeline,
-        'unique-badge-2': '🏆 ' + t.phaseUnique,
-        'unique-badge-3': '🏆 ' + t.phaseUnique,
+        'unique-badge-2': t.phaseUnique,
+        'unique-badge-3': t.phaseUnique,
+        'bundle-text': t.bundleText,
+        'bundle-price': t.bundlePrice,
         'roadmap-cta': t.roadmapCta,
+        // ROI Calculator
+        'roi-badge': t.roiBadge,
+        'roi-title': t.roiTitleNew,
+        'roi-subtitle': t.roiSubtitle,
+        'roi-inputs-title': t.roiInputsTitle,
+        'roi-label-drawings': t.roiLabelDrawings,
+        'roi-label-time': t.roiLabelTime,
+        'roi-label-rate': t.roiLabelRate,
+        'roi-result-label-time': t.roiResultLabelTime,
+        'roi-result-label-monthly': t.roiResultLabelMonthly,
+        'roi-result-label-annual': t.roiResultLabelAnnual,
+        // Learning section
+        'learning-badge': t.learningBadge,
+        'learning-title': t.learningTitle,
+        'learning-subtitle': t.learningSubtitle,
+        'learning-static-title': t.learningStaticTitle,
+        'learning-static-subtitle': t.learningStaticSubtitle,
+        'learning-static-s1': t.learningStaticS1,
+        'learning-static-s2': t.learningStaticS2,
+        'learning-static-s3': t.learningStaticS3,
+        'learning-static-result': t.learningStaticResult,
+        'learning-smart-title': t.learningSmartTitle,
+        'learning-smart-subtitle': t.learningSmartSubtitle,
+        'learning-smart-s1': t.learningSmartS1,
+        'learning-smart-s2': t.learningSmartS2,
+        'learning-smart-s3': t.learningSmartS3,
+        'learning-smart-result': t.learningSmartResult,
+        'chart-title': t.chartTitle,
+        'chart-m1': t.chartM1,
+        'chart-m3': t.chartM3,
+        'chart-m6': t.chartM6,
+        'chart-m12': t.chartM12,
+        'chart-m18': t.chartM18,
+        'benefit1-title': t.benefit1Title,
+        'benefit1-text': t.benefit1Text,
+        'benefit2-title': t.benefit2Title,
+        'benefit2-text': t.benefit2Text,
+        'benefit3-title': t.benefit3Title,
+        'benefit3-text': t.benefit3Text,
+        // Dual CTA
+        'cta-title': t.ctaTitle,
+        'cta-subtitle': t.ctaSubtitle,
+        'cta-a-badge': t.ctaABadge,
+        'cta-a-title': t.ctaATitle,
+        'cta-a-desc': t.ctaADesc,
+        'cta-a-f1': t.ctaAF1,
+        'cta-a-f2': t.ctaAF2,
+        'cta-a-f3': t.ctaAF3,
+        'cta-a-f4': t.ctaAF4,
+        'cta-b-badge': t.ctaBBadge,
+        'cta-b-title': t.ctaBTitle,
+        'cta-b-desc': t.ctaBDesc,
+        'cta-b-f1': t.ctaBF1,
+        'cta-b-f2': t.ctaBF2,
+        'cta-b-f3': t.ctaBF3,
+        'cta-b-f4': t.ctaBF4,
+        'cta-contact-label': t.ctaContactLabel,
         'footer-disclaimer': t.footerDisclaimer,
         'th-designation': t.thDesignation,
         'th-value': t.thValue,
@@ -2579,19 +4173,59 @@
         const el = document.getElementById(id);
         if (el) el.textContent = text;
       });
+
+      // Update ROI calculator display
+      updateROI();
     }
 
     // ============================================
-    // SCROLL TO DEMO
+    // ROI CALCULATOR
+    // ============================================
+    function updateROI() {
+      const drawings = parseInt(document.getElementById('roi-slider-drawings').value);
+      const timePerDrawing = parseInt(document.getElementById('roi-slider-time').value);
+      const hourlyRate = parseInt(document.getElementById('roi-slider-rate').value);
+
+      // Update display values
+      document.getElementById('roi-value-drawings').textContent = drawings;
+      document.getElementById('roi-value-time').textContent = timePerDrawing + ' min';
+      document.getElementById('roi-value-rate').textContent = 'EUR ' + hourlyRate;
+
+      // Calculate savings (assuming D2Q saves 98% of time: 30min -> 0.5min)
+      const timeSavedPerDrawing = timePerDrawing * 0.98; // minutes saved
+      const totalTimeSaved = (drawings * timeSavedPerDrawing) / 60; // hours per month
+      const monthlySavings = totalTimeSaved * hourlyRate;
+      const annualSavings = monthlySavings * 12;
+
+      // Investment cost (Phase 1 + 1.5 bundle)
+      const investmentCost = 27000;
+      const paybackMonths = Math.ceil(investmentCost / monthlySavings);
+
+      // Update results
+      document.getElementById('roi-result-time').textContent = Math.round(totalTimeSaved) + 'h';
+      document.getElementById('roi-result-monthly').textContent = 'EUR ' + Math.round(monthlySavings).toLocaleString();
+      document.getElementById('roi-result-annual').textContent = 'EUR ' + Math.round(annualSavings).toLocaleString();
+      document.getElementById('roi-payback-months').textContent = '~' + paybackMonths + ' ' + (currentLang === 'fr' ? 'mois' : 'months');
+    }
+
+    // ============================================
+    // SCROLL FUNCTIONS
     // ============================================
     function scrollToDemo() {
       document.getElementById('demo-section').scrollIntoView({ behavior: 'smooth' });
     }
 
+    function scrollToCTA() {
+      document.getElementById('cta-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
     // ============================================
     // INIT
     // ============================================
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', function() {
+      init();
+      updateROI();
+    });
   </script>
 </body>
 </html>
