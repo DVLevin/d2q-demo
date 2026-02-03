@@ -2524,7 +2524,7 @@
       <span class="trust-divider">|</span>
       <span class="trust-item">
         <svg class="trust-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-        <span id="trust-sovereignty">Projet à prix fixe, sans surprise</span>
+        <span id="trust-sovereignty">Approche modulaire, étape par étape</span>
       </span>
       <span class="trust-divider">|</span>
       <span class="trust-item">
@@ -2756,7 +2756,7 @@
             </svg>
           </div>
           <div class="objection-title" id="obj3-title">"Les projets IA échouent"</div>
-          <div class="objection-text" id="obj3-text">80% échouent. Notre approche: POC à €3K, Phase 1 à partir de €18K, Go/No-Go à chaque étape.</div>
+          <div class="objection-text" id="obj3-text">80% échouent. Notre approche: POC, puis Phase 1, Go/No-Go à chaque étape.</div>
         </div>
       </div>
     </div>
@@ -2879,13 +2879,7 @@
               <td><span class="compare-cross">X</span></td>
               <td class="highlight-col"><span class="compare-check">OK</span></td>
             </tr>
-            <tr>
-              <td id="comp-row-pricing">Modele de prix</td>
-              <td id="comp-pricing-werk">Licence/an</td>
-              <td id="comp-pricing-sw">Licence/an</td>
-              <td id="comp-pricing-llm">Token/usage</td>
-              <td class="highlight-col" id="comp-pricing-d2q">Projet fixe</td>
-            </tr>
+            <!-- pricing row hidden for demo -->
           </tbody>
         </table>
       </div>
@@ -2935,7 +2929,8 @@
             <li><span class="feature-check feature-check--done">OK</span> <span id="rm1-f3">Interface de validation</span></li>
             <li><span class="feature-check feature-check--done">OK</span> <span id="rm1-f4">Export Excel</span></li>
           </ul>
-          <div class="roadmap-price">EUR 18K</div>
+          <!-- price hidden for demo -->
+
         </div>
 
         <div class="roadmap-card roadmap-card--learning">
@@ -2948,7 +2943,8 @@
             <li><span class="feature-check feature-check--pending">O</span> <span id="rm15-f3">Optimisation des prompts</span></li>
             <li><span class="feature-check feature-check--pending">O</span> <span id="rm15-f4">Preparation donnees ML</span></li>
           </ul>
-          <div class="roadmap-price">EUR 9-12K</div>
+          <!-- price hidden for demo -->
+
         </div>
 
         <div class="roadmap-card roadmap-card--unique">
@@ -2962,7 +2958,8 @@
             <li><span class="feature-check feature-check--pending">O</span> <span id="rm2-f3">Score de correspondance</span></li>
             <li><span class="feature-check feature-check--pending">O</span> <span id="rm2-f4">Visualisation des differences</span></li>
           </ul>
-          <div class="roadmap-price">EUR 20-30K</div>
+          <!-- price hidden for demo -->
+
         </div>
 
         <div class="roadmap-card roadmap-card--unique">
@@ -2976,7 +2973,8 @@
             <li><span class="feature-check feature-check--pending">O</span> <span id="rm3-f3">Calculs d'ajustement</span></li>
             <li><span class="feature-check feature-check--pending">O</span> <span id="rm3-f4">Audit trail complet</span></li>
           </ul>
-          <div class="roadmap-price">EUR 25-35K</div>
+          <!-- price hidden for demo -->
+
         </div>
       </div>
 
@@ -2984,7 +2982,7 @@
       <div class="roadmap-bundle">
         <div class="roadmap-bundle-icon">RECOMMANDE</div>
         <div class="roadmap-bundle-text" id="bundle-text">Phase 1 + Phase 1.5 = Systeme qui s'ameliore avec vous</div>
-        <div class="roadmap-bundle-price" id="bundle-price">EUR 27K (au lieu de EUR 30K)</div>
+        <div class="roadmap-bundle-price" id="bundle-price"></div>
       </div>
 
       <div class="roadmap-cta">
@@ -2998,8 +2996,8 @@
     </div>
   </section>
 
-  <!-- ROI Calculator Section -->
-  <section class="roi-section" id="roi-section">
+  <!-- ROI Calculator Section (hidden for demo) -->
+  <section class="roi-section" id="roi-section" style="display: none;">
     <div class="container">
       <div class="section-header">
         <span class="section-badge" id="roi-badge">Calculateur ROI</span>
@@ -3210,19 +3208,19 @@
         <!-- Option A: Low-Investment POC -->
         <div class="cta-option-card cta-option-card--primary">
           <span class="cta-option-badge" id="cta-a-badge">Recommande</span>
-          <div class="cta-option-icon">€3K</div>
-          <h3 class="cta-option-title" id="cta-a-title">POC à Faible Investissement</h3>
+          <div class="cta-option-icon">POC</div>
+          <h3 class="cta-option-title" id="cta-a-title">Proof of Concept</h3>
           <p class="cta-option-desc" id="cta-a-desc">
-            Validez D2Q sur vos plans réels. €3K déduits de la Phase 1 si vous continuez.
+            Validez D2Q sur vos plans réels avant de passer à la Phase 1.
           </p>
           <ul class="cta-option-features">
             <li><span class="feature-icon">OK</span> <span id="cta-a-f1">5-10 de vos plans analysés</span></li>
             <li><span class="feature-icon">OK</span> <span id="cta-a-f2">Rapport de précision détaillé</span></li>
-            <li><span class="feature-icon">OK</span> <span id="cta-a-f3">€3K déduits si Phase 1</span></li>
+            <li><span class="feature-icon">OK</span> <span id="cta-a-f3">Déduit de la Phase 1</span></li>
             <li><span class="feature-icon">OK</span> <span id="cta-a-f4">Décision éclairée, risque minimal</span></li>
           </ul>
-          <a href="mailto:contact@chaine.ch?subject=POC%20D2Q%20€3K" class="cta-option-btn" id="cta-a-btn">
-            Demander le POC €3K
+          <a href="mailto:contact@chaine.ch?subject=POC%20D2Q" class="cta-option-btn" id="cta-a-btn">
+            Demander le POC
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
@@ -3412,7 +3410,7 @@
         ctaText: "Tester le Processus",
         // Trust elements
         trustIndustry: "Werk24 prouve 95% de précision",
-        trustSovereignty: "Projet à prix fixe, sans surprise",
+        trustSovereignty: "Approche modulaire, étape par étape",
         trustValidation: "Validation humaine intégrée",
         // Value propositions
         valueConsistency: "Même processus. Chaque fois.",
@@ -3426,7 +3424,7 @@
         obj2Title: "\"Ça va remplacer nos équipes\"",
         obj2Text: "Jamais. D2Q est un assistant. L'IA fait le copier-coller, vos experts gardent le contrôle.",
         obj3Title: "\"Les projets IA échouent\"",
-        obj3Text: "80% échouent. Notre approche: POC à €3K, Phase 1 à partir de €18K, Go/No-Go à chaque étape.",
+        obj3Text: "80% échouent. Notre approche: POC, puis Phase 1, Go/No-Go à chaque étape.",
         // ROI
         roiTitle: "Calculez Votre Gain",
         roiCurrent: "Actuellement",
@@ -3495,7 +3493,7 @@
         rm15Title: "Infrastructure d'Apprentissage",
         rm15Timeline: "+4 semaines",
         bundleText: "Phase 1 + Phase 1.5 = Systeme qui s'ameliore avec vous",
-        bundlePrice: "EUR 27K (au lieu de EUR 30K)",
+        bundlePrice: "",
         // Comparison section
         compBadge: "Comparatif Honnete",
         compTitle: "D2Q vs. Alternatives",
@@ -3509,11 +3507,11 @@
         compRowSimilarity: "Recherche de similitudes",
         compRowQuote: "Adaptation devis",
         compRowML: "ML personnalise",
-        compRowPricing: "Modele de prix",
-        compPricingWerk: "Licence/an",
-        compPricingSW: "Licence/an",
-        compPricingLLM: "Token/usage",
-        compPricingD2Q: "Projet fixe",
+        compRowPricing: "",
+        compPricingWerk: "",
+        compPricingSW: "",
+        compPricingLLM: "",
+        compPricingD2Q: "",
         honestyCompetitorTitle: "Quand Werk24 est meilleur",
         honestyC1: "Volume tres eleve (>1000 plans/mois)",
         honestyC2: "Plans deja standardises GD&T",
@@ -3568,13 +3566,13 @@
         ctaTitle: "Pret a Commencer?",
         ctaSubtitle: "Choisissez l'option qui vous convient",
         ctaABadge: "Recommande",
-        ctaATitle: "POC à Faible Investissement",
-        ctaADesc: "Validez D2Q sur vos plans réels. €3K déduits de la Phase 1 si vous continuez.",
+        ctaATitle: "Proof of Concept",
+        ctaADesc: "Validez D2Q sur vos plans réels avant de passer à la Phase 1.",
         ctaAF1: "5-10 de vos plans analysés",
         ctaAF2: "Rapport de précision détaillé",
-        ctaAF3: "€3K déduits si Phase 1",
+        ctaAF3: "Déduit de la Phase 1",
         ctaAF4: "Décision éclairée, risque minimal",
-        ctaABtn: "Demander le POC €3K",
+        ctaABtn: "Demander le POC",
         ctaBBadge: "Alternative",
         ctaBTitle: "Appel Decouverte",
         ctaBDesc: "Discussion technique de 30 minutes pour evaluer vos besoins specifiques.",
@@ -3602,7 +3600,7 @@
         ctaText: "Test the Process",
         // Trust elements
         trustIndustry: "Werk24 proves 95% accuracy",
-        trustSovereignty: "Fixed-price project, no surprises",
+        trustSovereignty: "Modular approach, step by step",
         trustValidation: "Built-in human validation",
         // Value propositions
         valueConsistency: "Same process. Every time.",
@@ -3616,7 +3614,7 @@
         obj2Title: "\"It will replace our team\"",
         obj2Text: "Never. D2Q is an assistant. AI does the copy-paste, your experts keep control.",
         obj3Title: "\"AI projects fail\"",
-        obj3Text: "80% do fail. Our approach: €3K POC, Phase 1 from €18K, Go/No-Go at each step.",
+        obj3Text: "80% do fail. Our approach: POC, then Phase 1, Go/No-Go at each step.",
         // ROI
         roiTitle: "Calculate Your Savings",
         roiCurrent: "Currently",
@@ -3685,7 +3683,7 @@
         rm15Title: "Learning Infrastructure",
         rm15Timeline: "+4 weeks",
         bundleText: "Phase 1 + Phase 1.5 = System that improves with you",
-        bundlePrice: "EUR 27K (instead of EUR 30K)",
+        bundlePrice: "",
         // Comparison section
         compBadge: "Honest Comparison",
         compTitle: "D2Q vs. Alternatives",
@@ -3699,11 +3697,11 @@
         compRowSimilarity: "Similarity search",
         compRowQuote: "Quote adaptation",
         compRowML: "Custom ML",
-        compRowPricing: "Pricing model",
-        compPricingWerk: "License/year",
-        compPricingSW: "License/year",
-        compPricingLLM: "Token/usage",
-        compPricingD2Q: "Fixed project",
+        compRowPricing: "",
+        compPricingWerk: "",
+        compPricingSW: "",
+        compPricingLLM: "",
+        compPricingD2Q: "",
         honestyCompetitorTitle: "When Werk24 is better",
         honestyC1: "Very high volume (>1000 drawings/month)",
         honestyC2: "Already standardized GD&T drawings",
@@ -3758,13 +3756,13 @@
         ctaTitle: "Ready to Start?",
         ctaSubtitle: "Choose the option that suits you",
         ctaABadge: "Recommended",
-        ctaATitle: "Low-Investment POC",
-        ctaADesc: "Validate D2Q on your real drawings. €3K deducted from Phase 1 if you proceed.",
+        ctaATitle: "Proof of Concept",
+        ctaADesc: "Validate D2Q on your real drawings before proceeding to Phase 1.",
         ctaAF1: "5-10 of your drawings analyzed",
         ctaAF2: "Detailed accuracy report",
-        ctaAF3: "€3K deducted if Phase 1",
+        ctaAF3: "Deducted from Phase 1",
         ctaAF4: "Informed decision, minimal risk",
-        ctaABtn: "Request €3K POC",
+        ctaABtn: "Request POC",
         ctaBBadge: "Alternative",
         ctaBTitle: "Discovery Call",
         ctaBDesc: "30-minute technical discussion to assess your specific needs.",
